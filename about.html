@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | ASH & HOUND</title>
+    <meta name="description" content="Meet the team behind Ash & Hound. Experienced, insured, and police-checked pet sitters in Brisbane.">
+    <link rel="canonical" href="https://ashandhound.com/about">
+
+```
+<style>
+    /* CORE STYLES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+        --primary: #2d2d2d;
+        --secondary: #666;
+        --sage: #b8caa5;
+        --dark-sage: #8b9a7d;
+        --cream: #faf8f5;
+        --white: #ffffff;
+        --border: #e8e3dd;
+    }
+    body { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.7; background: var(--white); -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+    /* HEADER */
+    header {
+        background: var(--white); padding: 1.5rem 5%; border-bottom: 1px solid var(--border);
+        display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100;
+        backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);
+    }
+    .logo { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--primary); text-decoration: none; transition: color 0.3s; }
+    .logo:hover { color: var(--sage); }
+    nav { display: flex; gap: 2rem; }
+    nav a { text-decoration: none; color: var(--primary); font-family: 'Helvetica Neue', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover { color: var(--sage); }
+    nav a.nav-cta { background: var(--primary); color: var(--white); padding: 0.75rem 1.5rem; transition: all 0.3s; }
+    nav a.nav-cta:hover { background: var(--sage); color: var(--primary); }
+
+    /* Mobile menu */
+    .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+    .menu-toggle span { width: 25px; height: 2px; background: var(--primary); transition: all 0.3s ease; }
+
+    /* HERO */
+    .page-hero { padding: 8rem 5% 6rem; background: var(--cream); text-align: center; position: relative; }
+    .page-hero h1 { margin-bottom: 1rem; font-size: 2.5rem; letter-spacing: 8px; }
+    .page-hero p { max-width: 600px; margin: 0 auto; color: var(--secondary); font-style: italic; font-size: 1.15rem; }
+
+    /* FOUNDER SECTION - Enhanced */
+    .founder-section {
+        max-width: 1200px;
+        margin: 6rem auto;
+        padding: 0 5%;
+    }
+    .founder-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+    .founder-images {
+        position: relative;
+    }
+    .founder-main-img {
+        width: 100%;
+        border-radius: 2px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+    .founder-main-img:hover { transform: scale(1.02); }
+    
+    /* Photo collage style */
+    .photo-collage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    .photo-collage img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 2px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        transition: transform 0.3s;
+    }
+    .photo-collage img:hover {
+        transform: scale(1.03);
+    }
+    
+    .founder-text h2 { margin-bottom: 2rem; font-size: 1.8rem; }
+    .founder-text p { margin-bottom: 1.5rem; color: var(--secondary); font-size: 1.05rem; line-height: 1.8; }
+    .founder-text .highlight {
+        background: linear-gradient(180deg, transparent 60%, var(--sage) 60%);
+        padding: 0 4px;
+    }
+    .name-origin {
+        background: var(--cream);
+        padding: 1.5rem;
+        border-left: 3px solid var(--sage);
+        margin: 2rem 0;
+        font-style: italic;
+    }
+    .name-origin strong {
+        color: var(--primary);
+        font-style: normal;
+    }
+    .signature {
+        font-family: 'Brush Script MT', cursive; font-size: 2.5rem; color: var(--sage);
+        margin-top: 2rem; font-weight: normal;
+    }
+
+    /* VALUES SECTION */
+    .values-section { background: var(--white); padding: 6rem 5%; border-top: 1px solid var(--border); }
+    .values-container { max-width: 1100px; margin: 0 auto; }
+    .section-title { text-align: center; font-size: 2rem; margin-bottom: 4rem; letter-spacing: 6px; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+    .value-card { text-align: center; padding: 2rem; }
+    .value-icon {
+        width: 60px; height: 60px; margin: 0 auto 1.5rem;
+        border: 2px solid var(--sage); border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.5rem; color: var(--sage);
+    }
+    .value-card h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+    .value-card p { font-size: 0.95rem; color: var(--secondary); line-height: 1.7; }
+
+    /* TEAM GRID */
+    .team-section { background: var(--cream); padding: 6rem 5%; }
+    .team-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 800px; margin: 0 auto; }
+    .team-card {
+        background: var(--white); padding: 2.5rem; text-align: center;
+        transition: all 0.3s; border: 1px solid var(--border); border-radius: 2px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .team-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    .team-photo {
+        width: 150px; height: 150px; border-radius: 50%; object-fit: cover;
+        margin: 0 auto 1.5rem; filter: grayscale(10%); border: 3px solid var(--cream);
+    }
+    .team-card h3 { font-size: 1.1rem; margin-bottom: 0.5rem; letter-spacing: 2px; }
+    .role-tag {
+        display: inline-block; background: var(--sage); color: white;
+        padding: 4px 12px; font-size: 0.7rem; font-family: 'Helvetica Neue', sans-serif;
+        text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem; border-radius: 50px;
+    }
+    .team-card p { font-size: 0.95rem; color: var(--secondary); line-height: 1.7; }
+    .team-location { 
+        font-size: 0.8rem; color: var(--dark-sage); margin-top: 1rem; 
+        font-family: 'Helvetica Neue', sans-serif; letter-spacing: 1px;
+    }
+
+    /* Featured team card (wider) */
+    .team-card.featured {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        text-align: left;
+        gap: 2rem;
+        align-items: center;
+    }
+    .team-card.featured .team-photo {
+        width: 180px;
+        height: 180px;
+        margin: 0;
+    }
+    .team-card.featured .team-content h3 {
+        margin-bottom: 0.5rem;
+    }
+    .team-card.featured .team-content p {
+        text-align: left;
+    }
+    .team-card.featured .team-location {
+        text-align: left;
+    }
+
+    /* CREDENTIALS SECTION */
+    .credentials-section {
+        background: var(--primary); color: var(--white); padding: 5rem 5%;
+        text-align: center;
+    }
+    .credentials-section h2 { color: var(--white); margin-bottom: 3rem; }
+    .credentials-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+        max-width: 1000px; margin: 0 auto;
+    }
+    .credential-item { padding: 1.5rem; }
+    .credential-item h4 {
+        font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 0.5rem;
+        color: var(--sage);
+    }
+    .credential-item p { font-size: 0.9rem; opacity: 0.9; }
+
+    /* FOOTER */
+    footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; }
+    .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; }
+    .footer-social { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+    .footer-social a { color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; }
+    .footer-social a:hover { color: var(--sage); }
+    .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-links a, .footer-contact a { color: var(--secondary); text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+    .footer-links a:hover, .footer-contact a:hover { color: var(--sage); }
+    .footer-legal { margin: 1.5rem 0; }
+    .footer-copyright { font-size: 0.85rem; color: var(--secondary); margin-top: 1.5rem; }
+
+    /* Responsive */
+    @media(max-width: 968px) {
+        .founder-grid, .values-grid { grid-template-columns: 1fr; }
+        .founder-images { order: -1; }
+        .team-grid { grid-template-columns: 1fr; }
+        .team-card.featured { 
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .team-card.featured .team-photo {
+            margin: 0 auto 1.5rem;
+        }
+        .team-card.featured .team-content p,
+        .team-card.featured .team-location {
+            text-align: center;
+        }
+        .credentials-grid { grid-template-columns: repeat(2, 1fr); }
+        .photo-collage img {
+            height: 140px;
+        }
+    }
+    @media(max-width: 768px) {
+        .menu-toggle { display: flex; z-index: 1001; }
+        nav {
+            position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+            background: var(--white); flex-direction: column; justify-content: flex-start;
+            padding: 6rem 2rem 2rem; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+        }
+        nav.active { right: 0; }
+        nav a { padding: 1rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .credentials-grid { grid-template-columns: 1fr; }
+    }
+</style>
+```
+
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<div class="page-hero">
+    <h1>The Team</h1>
+    <p>"We don't just watch your pets. We become their temporary family."</p>
+</div>
+
+<section class="founder-section">
+    <div class="founder-grid">
+        <div class="founder-images">
+            <img src="IMG_6387.jpeg" alt="Polaroid memories of Ash with dogs" class="founder-main-img">
+            <div class="photo-collage">
+                <img src="IMG_1536.png" alt="Dachshund and Cocker Spaniel relaxing on couch">
+                <img src="IMG_1584.png" alt="Long-haired dachshund in stylish living room">
+            </div>
+        </div>
+        <div class="founder-text">
+            <h2>Hi, I'm Ash</h2>
+            <p>I started Ash & Hound because I noticed a gap in the market for genuine, high-touch pet care. As a devoted dog owner myself, I know that leaving your "baby" with a stranger is terrifying.</p>
+
+```
+        <div class="name-origin">
+            <strong>Why "Ash & Hound"?</strong><br>
+            It's a little play on words — <strong>Ash</strong> (that's me!) + <strong>Hound</strong>, like dachshund (or as I like to say, "dash-hound"). These little sausages have my whole heart, and they're the reason I fell so deeply in love with dogs in the first place.
+        </div>
+        
+        <p>Based in Brisbane's inner city, my goal was to create a service that feels less like a transaction and more like leaving your dog with a trusted auntie. I am Pet First Aid certified, police checked, and fully insured.</p>
+        <p>When I'm not pet sitting, you'll find me at the local markets or exploring Brisbane's best dog-friendly cafes with a dachshund (or two) in tow.</p>
+        <div class="signature">Ash x</div>
+    </div>
+</div>
+```
+
+</section>
+
+<section class="values-section">
+    <div class="values-container">
+        <h2 class="section-title">Our Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">♥</div>
+                <h3>Compassion First</h3>
+                <p>Every pet is treated with the same love and attention we'd give our own. No exceptions.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">★</div>
+                <h3>Limited Capacity</h3>
+                <p>We deliberately keep our client list small to ensure personalized, consistent care.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">✓</div>
+                <h3>Transparency</h3>
+                <p>Regular updates, honest communication, and clear expectations from day one.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team-section">
+    <div style="text-align: center; margin-bottom: 4rem;">
+        <h2 class="section-title">Our Sitters</h2>
+    </div>
+    <div class="team-grid">
+
+```
+    <!-- PJ & Dion - Featured Card -->
+    <div class="team-card featured">
+        <img src="IMG_2634.jpeg" alt="PJ and Dion with their Cavoodles Lottie and Lola" class="team-photo">
+        <div class="team-content">
+            <h3>PJ & Dion</h3>
+            <span class="role-tag">Luxury Home Care</span>
+            <p>An Ashgrove-based couple offering premium, home-based care for small to medium dogs. With PJ working remotely full-time and Dion's flexible schedule, your dog enjoys constant companionship. Their Cavoodle princesses, Lottie and Lola, help visiting dogs feel instantly at home. Their immaculate, climate-controlled home features a secure fenced yard and everything needed for a calm, elevated stay.</p>
+            <p class="team-location">📍 Ashgrove</p>
+        </div>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="credentials-section">
+    <h2>Fully Qualified & Insured</h2>
+    <div class="credentials-grid">
+        <div class="credential-item">
+            <h4>Police Checked</h4>
+            <p>All sitters undergo comprehensive background checks</p>
+        </div>
+        <div class="credential-item">
+            <h4>Pet First Aid</h4>
+            <p>Certified in animal emergency response</p>
+        </div>
+        <div class="credential-item">
+            <h4>Insured</h4>
+            <p>Full public liability coverage for peace of mind</p>
+        </div>
+        <div class="credential-item">
+            <h4>References</h4>
+            <p>Verified testimonials from long-term clients</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-social">
+        <a href="https://instagram.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+        <a href="https://facebook.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+        </a>
+    </div>
+    <div class="footer-contact">
+        <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
+        <a href="tel:0401606603">0401 606 603</a>
+    </div>
+    <div class="footer-legal">
+        <a href="pricing.html">Pricing</a> | <a href="partners.html">Partners</a> | <a href="terms-of-service.html">Terms</a> | <a href="privacy-policy.html">Privacy</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
