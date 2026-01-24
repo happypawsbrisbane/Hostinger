@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquire | ASH & HOUND</title>
+    <meta name="description" content="Book your premium pet care service in Brisbane.">
+    <link rel="canonical" href="https://ashandhound.com/enquiry">
+
+    <style>
+        /* --- GLOBAL STYLES (MATCHING HOME PAGE) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #666;
+            --sage: #b8caa5;
+            --dark-sage: #8b9a7d;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+            --link: #4d6b42;
+        }
+
+        body { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.7; background: var(--cream); }
+        h1, h2, h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* HEADER */
+        header {
+            background: var(--white); padding: 1.5rem 5%; border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center;
+        }
+        .logo { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--primary); text-decoration: none; }
+        
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+        nav a { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); text-decoration: none; transition: color 0.3s ease; }
+        nav a:hover { color: var(--sage); }
+        nav a.nav-cta { background: var(--primary); color: var(--white); padding: 0.75rem 1.5rem; }
+        nav a.nav-cta:hover { background: var(--sage); color: var(--primary); }
+
+        /* MOBILE MENU */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+        .menu-toggle span { width: 25px; height: 2px; background: var(--primary); transition: all 0.3s ease; }
+
+        /* --- ENQUIRY PAGE SPECIFIC STYLES --- */
+        .enquiry-section {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .enquiry-wrapper {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        /* Form Container */
+        .form-card {
+            background: var(--white);
+            padding: 3rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+        }
+
+        .form-header h1 { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 5px; }
+        .form-header p { color: var(--secondary); margin-bottom: 2rem; font-style: italic; }
+
+        .form-group { margin-bottom: 1.5rem; }
+        
+        label { 
+            display: block; 
+            font-family: 'Helvetica Neue', sans-serif; 
+            font-size: 0.75rem; 
+            letter-spacing: 1.5px; 
+            text-transform: uppercase; 
+            margin-bottom: 0.5rem; 
+            color: var(--secondary); 
+            font-weight: 600; 
+        }
+
+        input, select, textarea { 
+            width: 100%; 
+            padding: 1rem; 
+            border: 1px solid var(--border); 
+            font-family: 'Georgia', serif; 
+            font-size: 1rem; 
+            background: #fafafa; 
+            transition: all 0.3s ease; 
+            border-radius: 0; 
+            color: var(--primary);
+        }
+
+        input:focus, select:focus, textarea:focus { 
+            outline: none; 
+            border-color: var(--sage); 
+            background: var(--white); 
+            box-shadow: 0 0 0 3px rgba(184, 202, 165, 0.2);
+        }
+
+        button.submit-btn { 
+            width: 100%; 
+            padding: 1.2rem; 
+            background: var(--primary); 
+            color: var(--white); 
+            border: none; 
+            font-family: 'Helvetica Neue', sans-serif; 
+            letter-spacing: 2px; 
+            text-transform: uppercase; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            margin-top: 1rem; 
+            font-size: 0.9rem;
+        }
+        button.submit-btn:hover { background: var(--sage); color: var(--primary); }
+
+        /* Sidebar Info */
+        .sidebar-info { padding-top: 1rem; }
+        .info-block { margin-bottom: 3rem; }
+        .info-block h3 { font-size: 1rem; color: var(--dark-sage); margin-bottom: 0.5rem; }
+        .info-block p { font-size: 1rem; color: var(--secondary); margin-bottom: 0.5rem; }
+        .info-block a { color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--sage); }
+        
+        /* FOOTER (MATCHING INDEX) */
+        footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; margin-top: 4rem; }
+        .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; }
+        .footer-social { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+        .footer-social a { color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+        .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-contact a { color: var(--secondary); text-decoration: none; }
+        .footer-legal a { color: var(--secondary); text-decoration: none; margin: 0 10px; font-size: 0.85rem; }
+        .footer-copyright { font-size: 0.85rem; color: var(--secondary); margin-top: 1.5rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .enquiry-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+            .sidebar-info { order: -1; text-align: center; padding-top: 0; }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; z-index: 1001; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--white); flex-direction: column; justify-content: flex-start;
+                padding: 6rem 2rem 2rem; gap: 0; box-shadow: -5px 0 20px rgba(0,0,0,0.1); transition: right 0.3s ease;
+            }
+            nav.active { right: 0; }
+            nav a { padding: 1rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; }
+            nav a.nav-cta { margin-top: 1rem; text-align: center; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+            .form-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<main>
+    <section class="enquiry-section">
+        <div class="enquiry-wrapper">
+            
+            <div class="form-card">
+                <div class="form-header">
+                    <h1>Start Your Enquiry</h1>
+                    <p>Tell us a little about your pet, and we'll get back to you within 24 hours.</p>
+                </div>
+
+                <form action="https://formspree.io/f/myzbraal" method="POST">
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suburb">Suburb</label>
+                        <input type="text" id="suburb" name="suburb" placeholder="e.g. New Farm" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service">
+                            <option value="" disabled selected>— Select a Service —</option>
+                            <option value="sitting">In-Home Pet Sitting (Overnight)</option>
+                            <option value="boarding">Private Boarding</option>
+                            <option value="wedding">Wedding Chaperone</option>
+                            <option value="day_care">Day Care / Drop-In</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dates">Dates Required</label>
+                        <input type="text" id="dates" name="dates" placeholder="e.g. 24th Dec - 2nd Jan">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">About Your Pet</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Name, breed, age, and any special needs (anxiety, medication, etc)..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Enquiry</button>
+                </form>
+                </div>
+
+            <div class="sidebar-info">
+                <div class="info-block">
+                    <h3>Service Area</h3>
+                    <p>We primarily service Inner Brisbane, Ascot, Hamilton, New Farm, Teneriffe, and surrounding suburbs.</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>New Clients</h3>
+                    <p>We require a complimentary Meet & Greet for all new clients. This ensures your pet feels comfortable with us before the booking begins.</p>
+                </div>
+
+                <div class="info-block">
+                    <h3>Direct Contact</h3>
+                    <p>Prefer to chat?<br>
+                    <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
+                    0401 606 603</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-social">
+        <a href="https://instagram.com/ashandhound" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+        <a href="https://facebook.com/ashandhound" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+        </a>
+    </div>
+    <div class="footer-contact">
+        <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
+        <a href="tel:0401606603">0401 606 603</a>
+    </div>
+    <div class="footer-legal">
+        <a href="pricing.html">Pricing</a> | <a href="terms-of-service.html">Terms</a> | <a href="privacy-policy.html">Privacy</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+</footer>
+
+<script>
+    // AUTO-SELECT SERVICE FROM URL
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const service = urlParams.get('service');
+        if (service) {
+            const select = document.getElementById('service');
+            const map = {
+                'wedding': 'wedding', 'wedding_full': 'wedding', 'wedding_ceremony': 'wedding',
+                'boarding': 'boarding', 'boarding_constant': 'boarding',
+                'sitting': 'sitting', 'constant': 'sitting',
+                'day_companion': 'day_care', 'day_guardian': 'day_care'
+            };
+            if(map[service]) { select.value = map[service]; }
+        }
+    }
+
+    // MOBILE MENU TOGGLE
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Dog Chaperone Brisbane | ASH & HOUND</title>
+    <link rel="canonical" href="https://ashandhound.com/wedding-chaperone">
+    <meta name="description" content="Professional wedding dog chaperone and concierge services in Brisbane. Include your dog in your wedding photos safely and stress-free.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Wedding Dog Chaperone | ASH & HOUND">
+    <meta property="og:description" content="Don't say 'I do' without them. Professional canine wedding chaperone services in Brisbane.">
+    
+    <style>
+        /* CORE STYLES FROM INDEX (retained for consistency) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #666;
+            --sage: #b8caa5;
+            --dark-sage: #8b9a7d;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+            --gold: #d4af37; /* New color for wedding luxury */
+        }
+        body { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.8; background: var(--white); }
+        h1, h2, h3, h4 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* Header */
+        header { background: var(--white); padding: 1.5rem 5%; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--primary); text-decoration: none; }
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+        nav a { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); text-decoration: none; transition: color 0.3s ease; }
+        nav a:hover { color: var(--sage); }
+        nav a.nav-cta { background: var(--primary); color: var(--white); padding: 0.75rem 1.5rem; }
+
+        /* WEDDING SPECIFIC HERO */
+        .wedding-hero {
+            height: 70vh;
+            min-height: 500px;
+            background-color: var(--primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+        /* Placeholder for wedding bg - replace url with actual wedding image */
+        .wedding-hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: url('IMG_0110.jpeg'); /* Use a photo of a dog in a tuxedo/floral collar here */
+            background-size: cover; background-position: center;
+            filter: brightness(0.4) sepia(0.2);
+            z-index: 0;
+        }
+        .hero-inner { position: relative; z-index: 1; max-width: 800px; padding: 0 20px; }
+        .hero-inner h1 { font-size: 3.5rem; margin-bottom: 1rem; letter-spacing: 8px; }
+        .hero-inner p { font-size: 1.2rem; font-style: italic; opacity: 0.9; }
+
+        /* INTRO SECTION */
+        .intro-block { padding: 6rem 5%; text-align: center; max-width: 900px; margin: 0 auto; }
+        .intro-block h2 { color: var(--sage); margin-bottom: 2rem; font-size: 1.8rem; }
+        .intro-block p { font-size: 1.1rem; color: var(--secondary); margin-bottom: 1rem; }
+
+        /* HOW IT WORKS (Timeline) */
+        .timeline-section { background: var(--cream); padding: 6rem 5%; }
+        .timeline-container { max-width: 1000px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        
+        .timeline-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
+        .timeline-step { text-align: center; }
+        .step-number { 
+            display: inline-block; width: 40px; height: 40px; border: 1px solid var(--primary); 
+            border-radius: 50%; line-height: 40px; margin-bottom: 1.5rem; font-family: sans-serif; 
+        }
+        .timeline-step h3 { font-size: 1rem; margin-bottom: 1rem; letter-spacing: 2px; }
+        .timeline-step p { font-size: 0.9rem; color: var(--secondary); line-height: 1.6; }
+
+        /* PACKAGES */
+        .packages-section { padding: 6rem 5%; }
+        .package-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+        
+        .package-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .package-card.featured {
+            border: 1px solid var(--sage);
+            box-shadow: 0 10px 40px rgba(184, 202, 165, 0.2);
+            position: relative;
+        }
+        .featured-tag {
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: var(--sage); color: white; padding: 5px 15px;
+            font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+        }
+        .pkg-title { font-size: 1.4rem; margin-bottom: 1rem; color: var(--primary); }
+        .pkg-price { font-size: 2rem; color: var(--dark-sage); font-family: sans-serif; margin-bottom: 2rem; }
+        .pkg-list { list-style: none; margin-bottom: 2.5rem; text-align: left; padding: 0 1rem; }
+        .pkg-list li { 
+            margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--secondary); 
+            padding-left: 1.5rem; position: relative; 
+        }
+        .pkg-list li::before { content: '•'; color: var(--sage); position: absolute; left: 0; }
+        
+        .book-btn {
+            display: inline-block; padding: 1rem 2.5rem; border: 1px solid var(--primary);
+            text-decoration: none; color: var(--primary); text-transform: uppercase;
+            font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s;
+        }
+        .book-btn:hover { background: var(--primary); color: white; }
+
+        /* FAQ */
+        .faq-section { background: var(--cream); padding: 5rem 5%; }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { margin-bottom: 2rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 2rem; }
+        .faq-item h4 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--primary); }
+        .faq-item p { font-size: 0.95rem; color: var(--secondary); }
+
+        /* FOOTER */
+        footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; }
+        .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; }
+        .footer-links a { color: var(--secondary); text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-inner h1 { font-size: 2.2rem; }
+            .timeline-grid, .package-container { grid-template-columns: 1fr; }
+            .menu-toggle { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+            .menu-toggle span { width: 25px; height: 2px; background: var(--primary); }
+            nav { display: none; } /* Simplified mobile nav for snippet */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+</header>
+
+<section class="wedding-hero">
+    <div class="hero-inner">
+        <h1>The Wedding Chaperone</h1>
+        <p>Because they are family, and they belong in the photos.</p>
+    </div>
+</section>
+
+<section class="intro-block">
+    <h2>Your Best Friend, at Your Biggest Moment</h2>
+    <p>You want your dog at your wedding, but you don't want the stress of holding the leash, worrying about muddy paws on the dress, or asking a guest to miss the ceremony to "watch the dog."</p>
+    <p>That's where we come in. We are your dog's "Plus One"—dedicated solely to their care, styling, and happiness throughout your event.</p>
+</section>
+
+<section class="timeline-section">
+    <div class="timeline-container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+        </div>
+        <div class="timeline-grid">
+            <div class="timeline-step">
+                <span class="step-number">01</span>
+                <h3>The Concierge</h3>
+                <p>We pick your dog up from your home, exercise them so they are calm, and transport them safely to your venue.</p>
+            </div>
+            <div class="timeline-step">
+                <span class="step-number">02</span>
+                <h3>The Styling</h3>
+                <p>We dress them in their tuxedo, floral collar, or bandana, ensuring they look photo-ready upon arrival.</p>
+            </div>
+            <div class="timeline-step">
+                <span class="step-number">03</span>
+                <h3>The Photos</h3>
+                <p>We work directly with your photographer to get *that* shot—using treats, squeakers, and expert handling.</p>
+            </div>
+            <div class="timeline-step">
+                <span class="step-number">04</span>
+                <h3>The Departure</h3>
+                <p>Once the photos are done, we whisk them away to our home (or yours) for dinner and a safe overnight stay.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="packages-section">
+    <div class="section-header">
+        <h2>Wedding Packages</h2>
+    </div>
+    <div class="package-container">
+        <div class="package-card">
+            <h3 class="pkg-title">The Ceremony</h3>
+            <div class="pkg-price">from $450</div>
+            <ul class="pkg-list">
+                <li>Pre-wedding Meet & Greet</li>
+                <li>Transport to Venue (within 20km)</li>
+                <li>2 Hours of Chaperoning</li>
+                <li>Dressing & Styling assistance</li>
+                <li>Ceremony & Photo handling</li>
+                <li>Hydration & Potty breaks</li>
+                <li>Transport home</li>
+                <li style="font-style: italic; opacity: 0.7;">Does not include overnight care</li>
+            </ul>
+            <a href="enquiry.html?service=wedding_ceremony" class="book-btn">Check Availability</a>
+        </div>
+
+        <div class="package-card featured">
+            <span class="featured-tag">Most Popular</span>
+            <h3 class="pkg-title">The "I Do" & Stay</h3>
+            <div class="pkg-price">from $650</div>
+            <ul class="pkg-list">
+                <li><strong>Everything in Ceremony Package, plus:</strong></li>
+                <li>Extended Chaperoning (3 Hours total)</li>
+                <li>Cocktail Hour mingling (if desired)</li>
+                <li><strong>Overnight Luxury Boarding included</strong></li>
+                <li>Morning-after breakfast & walk</li>
+                <li>Updates sent to the Honeymoon couple</li>
+                <li>Safe return transport the next day</li>
+            </ul>
+            <a href="enquiry.html?service=wedding_full" class="book-btn" style="background: var(--sage); color: white; border-color: var(--sage);">Enquire Now</a>
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="section-header">
+            <h2>Common Questions</h2>
+        </div>
+        <div class="faq-item">
+            <h4>My dog is excitable/reactive. Can they still attend?</h4>
+            <p>We specialize in anxious and high-energy dogs. During the Meet & Greet, we will assess if a wedding environment is safe for them. If the reception is too loud, we may recommend a "Photos Only" package in a quiet area of the venue.</p>
+        </div>
+        <div class="faq-item">
+            <h4>Do you groom them?</h4>
+            <p>We are not professional groomers, but we do "styling." This means brushing, wiping eyes/paws, spritzing with dog-safe cologne, and dressing them in their attire.</p>
+        </div>
+        <div class="faq-item">
+            <h4>How far do you travel?</h4>
+            <p>We service all Brisbane venues. Venues in the Gold Coast, Sunshine Coast, or Hinterland attract a travel surcharge of $1.50/km.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="enquiry.html">Enquire</a>
+    </div>
+    <p style="margin-top: 1rem; color: #999; font-size: 0.8rem;">&copy; 2025 Ash & Hound. Brisbane, QLD.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

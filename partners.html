@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preferred Partners | ASH & HOUND</title>
+    <meta name="description" content="Local businesses we know, trust, and love. Brisbane's best pet-friendly cafes, vets, and groomers.">
+    <link rel="canonical" href="https://ashandhound.com/partners">
+
+    <style>
+        /* CORE STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #666;
+            --sage: #b8caa5;
+            --dark-sage: #8b9a7d;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+        }
+        body { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.7; background: var(--white); -webkit-font-smoothing: antialiased; }
+        h1, h2 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* HEADER */
+        header {
+            background: var(--white); padding: 1.5rem 5%; border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);
+        }
+        .logo { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--primary); text-decoration: none; transition: color 0.3s; }
+        .logo:hover { color: var(--sage); }
+        nav { display: flex; gap: 2rem; }
+        nav a { text-decoration: none; color: var(--primary); font-family: 'Helvetica Neue', sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        nav a:hover { color: var(--sage); }
+        nav a.nav-cta { background: var(--primary); color: var(--white); padding: 0.75rem 1.5rem; transition: all 0.3s; }
+        nav a.nav-cta:hover { background: var(--sage); color: var(--primary); }
+
+        /* Mobile menu */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+        .menu-toggle span { width: 25px; height: 2px; background: var(--primary); transition: all 0.3s ease; }
+
+        /* HERO */
+        .page-hero { padding: 8rem 5% 6rem; background: var(--cream); text-align: center; }
+        .page-hero h1 { margin-bottom: 1rem; font-size: 2.5rem; letter-spacing: 8px; }
+        .page-hero p { max-width: 700px; margin: 0 auto; color: var(--secondary); font-style: italic; font-size: 1.15rem; }
+
+        /* PARTNER CONTAINER */
+        .partner-container { max-width: 900px; margin: 4rem auto 6rem; padding: 0 5%; }
+
+        .category { margin-bottom: 4rem; }
+        .category h2 {
+            font-size: 1.2rem; border-bottom: 2px solid var(--sage); padding-bottom: 0.75rem;
+            margin-bottom: 2rem; display: inline-block; font-family: 'Helvetica Neue', sans-serif;
+            text-transform: uppercase; letter-spacing: 3px;
+        }
+
+        .partner-link {
+            display: flex; justify-content: space-between; align-items: baseline;
+            padding: 1.2rem 0; border-bottom: 1px solid var(--border);
+            text-decoration: none; color: var(--primary);
+            transition: all 0.3s; position: relative;
+        }
+        .partner-link::before {
+            content: ''; position: absolute; left: 0; bottom: -1px;
+            width: 0; height: 2px; background: var(--sage);
+            transition: width 0.3s ease;
+        }
+        .partner-link:hover {
+            color: var(--dark-sage); padding-left: 15px;
+        }
+        .partner-link:hover::before { width: 100%; }
+        .partner-name { font-weight: bold; font-size: 1.1rem; }
+        .partner-suburb {
+            color: var(--secondary); font-size: 0.85rem;
+            font-family: 'Helvetica Neue', sans-serif; text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER */
+        footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; }
+        .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; }
+        .footer-social { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+        .footer-social a { color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; }
+        .footer-social a:hover { color: var(--sage); }
+        .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-links a, .footer-contact a { color: var(--secondary); text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+        .footer-links a:hover, .footer-contact a:hover { color: var(--sage); }
+        .footer-legal { margin: 1.5rem 0; }
+        .footer-copyright { font-size: 0.85rem; color: var(--secondary); margin-top: 1.5rem; }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .menu-toggle { display: flex; z-index: 1001; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--white); flex-direction: column; justify-content: flex-start;
+                padding: 6rem 2rem 2rem; box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+            }
+            nav.active { right: 0; }
+            nav a { padding: 1rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<div class="page-hero">
+    <h1>Preferred Partners</h1>
+    <p>Local businesses we know, trust, and love. These are the professionals we recommend to our clients for exceptional pet care and services.</p>
+</div>
+
+<div class="partner-container">
+    <div class="category">
+        <h2>Veterinary Care</h2>
+        <a href="#" class="partner-link">
+            <span class="partner-name">The Vet on Teneriffe</span>
+            <span class="partner-suburb">Teneriffe</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">New Farm Veterinary Surgery</span>
+            <span class="partner-suburb">New Farm</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Ascot Vet Surgery</span>
+            <span class="partner-suburb">Ascot</span>
+        </a>
+    </div>
+
+    <div class="category">
+        <h2>Grooming</h2>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Dog Overboard</span>
+            <span class="partner-suburb">New Farm</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Hounds of Hamilton</span>
+            <span class="partner-suburb">Hamilton</span>
+        </a>
+    </div>
+
+    <div class="category">
+        <h2>Dog Friendly Cafes</h2>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Mary Mae's</span>
+            <span class="partner-suburb">New Farm</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Kin & Co</span>
+            <span class="partner-suburb">Teneriffe</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Pawbar Brisbane</span>
+            <span class="partner-suburb">Fortitude Valley</span>
+        </a>
+    </div>
+
+    <div class="category">
+        <h2>Pet Supplies</h2>
+        <a href="#" class="partner-link">
+            <span class="partner-name">Pet Circle</span>
+            <span class="partner-suburb">Online & Stores</span>
+        </a>
+        <a href="#" class="partner-link">
+            <span class="partner-name">The Pet Grocer</span>
+            <span class="partner-suburb">Multiple Locations</span>
+        </a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-social">
+        <a href="https://instagram.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+        <a href="https://facebook.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+        </a>
+    </div>
+    <div class="footer-contact">
+        <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
+        <a href="tel:0401606603">0401 606 603</a>
+    </div>
+    <div class="footer-legal">
+        <a href="pricing.html">Pricing</a> | <a href="about.html">About</a> | <a href="terms-of-service.html">Terms</a> | <a href="privacy-policy.html">Privacy</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

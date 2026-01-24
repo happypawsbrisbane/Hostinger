@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Boarding Brisbane | Private Dog & Cat Boarding | ASH & HOUND</title>
+    <link rel="canonical" href="https://ashandhound.com/boarding">
+    <meta name="description" content="Premium private pet boarding in Brisbane. Your dog or cat stays in our home with one-on-one care. Not a kennel - a home away from home.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ashandhound.com/boarding">
+    <meta property="og:title" content="Pet Boarding Brisbane | ASH & HOUND">
+    <meta property="og:description" content="Premium private pet boarding. Your pet stays in our home with dedicated one-on-one care.">
+    <meta property="og:image" content="https://ashandhound.com/IMG_2696.jpeg">
+    <meta property="og:locale" content="en_AU">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Pet Boarding",
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": "https://ashandhound.com/#business",
+        "name": "ASH & HOUND",
+        "alternateName": ["Happy Paws Brisbane"]
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Brisbane"
+      },
+      "description": "Premium private pet boarding in a home environment. Your dog or cat stays with us for dedicated one-on-one care."
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #555555;
+            --sage: #b8caa5;
+            --dark-sage: #7a8a6d;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+            --link: #4d6b42;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--primary);
+            line-height: 1.8;
+            background: var(--white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4 {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            padding: 1.5rem 5%;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            color: var(--primary);
+            text-decoration: none;
+        }
+        .logo:hover { color: var(--sage); }
+        nav { display: flex; gap: 2rem; align-items: center; }
+        nav a {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        nav a:hover { color: var(--sage); }
+        nav a.nav-cta {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
+        }
+        nav a.nav-cta:hover {
+            background: var(--sage);
+            color: var(--primary);
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero */
+        .hero-immersive {
+            position: relative;
+            height: 75vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            color: var(--white);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slowZoom 20s infinite alternate;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.35);
+            z-index: 2;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 5%;
+            animation: fadeUp 1s forwards 0.3s;
+            opacity: 0;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            color: #fff;
+        }
+        .hero-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        /* Editorial */
+        .editorial-section {
+            padding: 6rem 5%;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .pill-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border: 1px solid var(--sage);
+            border-radius: 50px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--dark-sage);
+            margin-bottom: 2rem;
+        }
+        .editorial-quote {
+            font-size: 2rem;
+            font-family: 'Georgia', serif;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Service Sections */
+        .service-section {
+            padding: 5rem 5%;
+            border-top: 1px solid var(--border);
+        }
+        .service-section.alt-bg {
+            background: var(--cream);
+        }
+        .section-header { 
+            text-align: center; 
+            margin-bottom: 3rem; 
+        }
+        .section-header h2 { 
+            font-size: 1.8rem; 
+            margin-bottom: 0.5rem; 
+        }
+        .section-header p { 
+            font-size: 0.8rem; 
+            letter-spacing: 2px; 
+            color: var(--dark-sage); 
+            text-transform: uppercase; 
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .service-grid.single {
+            grid-template-columns: 1fr;
+            max-width: 650px;
+        }
+
+        /* Service Cards */
+        .service-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+        .service-card.featured {
+            border-color: var(--sage);
+        }
+        
+        .card-label {
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        .card-label.featured {
+            color: var(--dark-sage);
+        }
+        .card-title { 
+            font-size: 1.5rem; 
+            color: var(--primary); 
+            margin-bottom: 1.5rem; 
+        }
+        
+        .card-desc {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+        
+        .card-features {
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .feature {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .feature::before {
+            content: ''; 
+            width: 5px; 
+            height: 5px; 
+            background: var(--sage); 
+            border-radius: 50%;
+        }
+
+        .card-btn {
+            display: block;
+            text-align: center;
+            padding: 0.8rem;
+            border: 1px solid var(--primary);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--primary);
+            transition: all 0.3s;
+            margin-top: auto;
+        }
+        .card-btn:hover { 
+            background: var(--primary); 
+            color: var(--white); 
+        }
+        .card-btn.featured {
+            background: var(--primary);
+            color: var(--white);
+        }
+        .card-btn.featured:hover {
+            background: var(--dark-sage);
+            border-color: var(--dark-sage);
+        }
+
+        /* Images */
+        .section-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Requirements Section */
+        .requirements-section {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+        .requirements-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        .req-item h4 { 
+            color: var(--dark-sage); 
+            margin-bottom: 1rem; 
+            font-size: 0.9rem; 
+        }
+        .req-item li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            list-style: none;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .req-item li::before { 
+            content: '•'; 
+            position: absolute; 
+            left: 0; 
+            color: var(--sage); 
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--cream);
+            color: var(--primary);
+            padding: 5rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .cta-section p {
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            font-style: italic;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        .cta-button:hover {
+            background: var(--dark-sage);
+            border-color: var(--dark-sage);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 3rem 5%;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin: 0 1rem;
+            transition: color 0.3s;
+        }
+        .footer-links a:hover { color: var(--sage); }
+        .footer-contact {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .footer-contact a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        .footer-contact a:hover { color: var(--sage); }
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            margin-top: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; letter-spacing: 4px; }
+            .service-grid, .requirements-grid { grid-template-columns: 1fr; }
+            .service-card { padding: 2rem; }
+            .section-image { height: 300px; }
+            
+            .menu-toggle { display: flex; }
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: var(--white);
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 6rem 2rem 2rem;
+                gap: 0;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+                transition: right 0.3s ease;
+            }
+            nav.active { right: 0; }
+            nav a {
+                padding: 1rem 0;
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+                text-align: left;
+            }
+            nav a.nav-cta {
+                margin-top: 1rem;
+                text-align: center;
+            }
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -5px);
+            }
+        }
+
+        @keyframes slowZoom { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog-in-home-pet-sitting-vs-boarding-brisbane.html">Blog</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</header>
+
+<section class="hero-immersive">
+    <div class="hero-bg">
+        <img src="IMG_2696.jpeg" alt="Happy dog in a home setting">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1 class="hero-title">Private Boarding</h1>
+        <p class="hero-text">With your dedicated sitter.</p>
+    </div>
+</section>
+
+<section class="editorial-section">
+    <span class="pill-badge">Limited Capacity</span>
+    <h2 class="editorial-quote">"Your pet joins our family."</h2>
+    <p style="color: var(--secondary); max-width: 600px; margin: 0 auto;">
+        Your pet stays in a trusted sitter's home with dedicated one-on-one care. Consistent companionship, regular exercise, and the calm of a real home environment—not a kennel.
+    </p>
+</section>
+
+<section class="service-section alt-bg">
+    <div class="section-header">
+        <h2>Boarding Options</h2>
+        <p>Stay with us</p>
+    </div>
+    <div class="service-grid">
+        <div class="service-card">
+            <span class="card-label">Standard Care</span>
+            <h3 class="card-title">Home Boarding</h3>
+            <p class="card-desc">Your dog moves right into the heart of your designated sitters home. Designed for settled, house-trained dogs who are comfortable relaxing while we run brief errands.</p>
+            <div class="card-features">
+                <div class="feature">Indoor sleeping in a private home</div>
+                <div class="feature">Daily walk & playtime</div>
+                <div class="feature">Social family environment</div>
+                <div class="feature">Can be left alone for a general work day (up to 8 hours)</div>
+            </div>
+            <a href="enquiry.html?service=boarding" class="card-btn">Check Availability</a>
+        </div>
+
+        <div class="service-card featured">
+            <span class="card-label featured">Anxiety Support</span>
+            <h3 class="card-title">Constant Care</h3>
+            <p class="card-desc">Dedicated support for guests who cannot be left alone. We ensure a continuous presence, making this the safe option for separation anxiety, seniors, or puppies.</p>
+            <div class="card-features">
+                <div class="feature">24/7 Human Company</div>
+                <div class="feature">Never left alone</div>
+                <div class="feature">Medication administration</div>
+                <div class="feature">Puppy routines & frequent breaks</div>
+            </div>
+            <a href="enquiry.html?service=boarding_constant" class="card-btn featured">Enquire</a>
+        </div>
+    </div>
+</section>
+
+<img src="IMG_7675.jpeg" alt="Dog in a beautiful Brisbane home" class="section-image">
+
+<section class="requirements-section">
+    <div class="section-header">
+        <h2>Essentials & Booking</h2>
+    </div>
+    <div class="requirements-grid">
+        <div class="req-item">
+            <h4>Health & Essentials</h4>
+            <ul>
+                <li>Meet and greet required before booking</li>
+                <li>All guests must be fully house-trained</li>
+                <li>Current flea and tick treatment</li>
+                <li>Bring food, meds, and favourite bedding</li>
+            </ul>
+        </div>
+        <div class="req-item">
+            <h4>Booking & Payment</h4>
+            <ul>
+                <li>Dates are not held until payment is received.</li>
+                <li>Limited capacity, spots fill quickly.</li>
+                <li>Public holiday surcharges may apply.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<img src="IMG_2478.jpeg" alt="Happy dog relaxing on couch" class="section-image">
+
+<section class="cta-section">
+    <h2>Ready to Book?</h2>
+    <p>Limited availability. Let's discuss your pet's needs.</p>
+    <a href="enquiry.html" class="cta-button">Enquire Now</a>
+</section>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-links">
+        <a href="pricing.html">Pricing</a>
+        <a href="terms-of-service.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+    </div>
+    <div class="footer-contact">
+        <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a> | <a href="tel:0401606603">0401 606 603</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

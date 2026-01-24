@@ -1,0 +1,191 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://ashandhound.com/#business",
+  "name": "ASH & HOUND",
+  "alternateName": ["Ash and Hound", "Happy Paws Brisbane", "ASH & HOUND by Happy Paws Brisbane"],
+  "description": "Premium in-home pet sitting and boarding services for Brisbane's devoted pet owners. Specialising in anxious, elderly, and special needs pets. Formerly Happy Paws Brisbane.",
+  "url": "https://ashandhound.com",
+  "telephone": "+61401606603",
+  "email": "hello@ashandhound.com",
+  "image": "https://ashandhound.com/IMG_7589.jpeg",
+  "logo": "https://ashandhound.com/IMG_7589.jpeg",
+  "priceRange": "$$$",
+  "currenciesAccepted": "AUD",
+  "paymentAccepted": "Cash, Bank Transfer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brisbane",
+    "addressRegion": "Queensland",
+    "addressCountry": "AU"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": -27.4698,
+    "longitude": 153.0251
+  },
+  "areaServed": [
+    {
+      "@type": "City",
+      "name": "Brisbane",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "Queensland"
+      }
+    },
+    {"@type": "Place", "name": "New Farm, Brisbane"},
+    {"@type": "Place", "name": "Hamilton, Brisbane"},
+    {"@type": "Place", "name": "Ascot, Brisbane"},
+    {"@type": "Place", "name": "Bulimba, Brisbane"},
+    {"@type": "Place", "name": "Teneriffe, Brisbane"},
+    {"@type": "Place", "name": "Newstead, Brisbane"},
+    {"@type": "Place", "name": "Paddington, Brisbane"},
+    {"@type": "Place", "name": "Clayfield, Brisbane"}
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "07:00",
+    "closes": "20:00"
+  },
+  "sameAs": [
+    "https://www.instagram.com/ashandhound",
+    "https://www.facebook.com/ashandhound"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Pet Care Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "In-Home Pet Sitting - Standard Live-In",
+          "description": "Overnight pet care in your own home. Ideal for anxious pets who prefer familiar surroundings."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "175",
+          "priceCurrency": "AUD",
+          "unitText": "per night"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "In-Home Pet Sitting - Exclusive Constant Care",
+          "description": "Near-constant supervision for puppies, seniors, anxious dogs, or pets requiring frequent companionship."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "320",
+          "priceCurrency": "AUD",
+          "unitText": "per night"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Boutique Boarding",
+          "description": "Your pet stays in our pet-friendly home with dedicated one-on-one care. Limited to 2 guests."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "150",
+          "priceCurrency": "AUD",
+          "unitText": "per night"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Short Stays",
+          "description": "Daytime pet care visits including feeding, walks, garden breaks, and companionship."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "40",
+          "priceCurrency": "AUD",
+          "unitText": "from 25 minutes"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Day Stay - The Companion",
+          "description": "Extended daytime care for pets who need company during long day trips."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "200",
+          "priceCurrency": "AUD",
+          "unitText": "per day"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Day Stay - The Guardian",
+          "description": "Continuous daytime supervision for pets who find solitude difficult."
+        },
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": "250",
+          "priceCurrency": "AUD",
+          "unitText": "per day"
+        }
+      }
+    ]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "25",
+    "bestRating": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Sarah"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Our anxious rescue greyhound has never settled with anyone else. Ash stayed in our home for two weeks and maintained her exact routine. Worth every penny for the peace of mind."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Michael"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "We've trusted Ash with overnight care for our three Burmese cats for two years. She handles their medication schedules perfectly. It's like having family stay over."
+    },
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "Jennifer"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "Finding someone trustworthy for in-home care is difficult. Ash stayed overnight with our elderly spaniel during our daughter's wedding week. Professional, discreet, and genuinely caring."
+    }
+  ]
+}
+</script>

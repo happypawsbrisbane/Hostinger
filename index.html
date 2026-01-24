@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASH & HOUND | Premium Pet Care Brisbane</title>
+    <link rel="canonical" href="https://ashandhound.com/">
+    <meta name="description" content="Professional in-home pet sitting and boarding for Brisbane's devoted pet owners. Specialising in anxious and special needs pets.">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ashandhound.com/">
+    <meta property="og:title" content="ASH & HOUND | Premium Pet Care Brisbane">
+    <meta property="og:description" content="Professional in-home pet sitting and boarding for Brisbane's devoted pet owners. Specialising in anxious and special needs pets">
+    <meta property="og:image" content="https://ashandhound.com/IMG_7589.jpeg">
+    <meta property="og:locale" content="en_AU">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://ashandhound.com/#business",
+      "name": "ASH & HOUND",
+      "alternateName": ["Ash and Hound", "Happy Paws Brisbane"],
+      "description": "Premium in-home pet sitting and boarding services for Brisbane's devoted pet owners.",
+      "url": "https://ashandhound.com",
+      "telephone": "+61401606603",
+      "email": "hello@ashandhound.com",
+      "image": "https://ashandhound.com/IMG_7589.jpeg",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brisbane",
+        "addressRegion": "Queensland",
+        "addressCountry": "AU"
+      }
+    }
+    </script>
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Intro Splash Screen */
+        .intro-splash {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #ffffff; display: flex; align-items: center; justify-content: center;
+            z-index: 9999; opacity: 1; transition: opacity 0.8s ease;
+        }
+        .intro-splash.fade-out { opacity: 0; pointer-events: none; }
+        .intro-splash h1 {
+            font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 3rem; font-weight: 300;
+            letter-spacing: 12px; color: #2d2d2d; text-transform: uppercase;
+            opacity: 0; animation: fadeInText 1.5s ease forwards;
+        }
+        @keyframes fadeInText { 0% { opacity: 0; letter-spacing: 20px; } 100% { opacity: 1; letter-spacing: 12px; } }
+
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #666;
+            --sage: #b8caa5;
+            --dark-sage: #8b9a7d;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+            --link: #4d6b42;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Georgia', serif; color: var(--primary); line-height: 1.7; background: var(--white); -webkit-font-smoothing: antialiased; }
+        h1, h2, h3 { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* Header */
+        header {
+            background: var(--white); padding: 1.5rem 5%; border-bottom: 1px solid var(--border);
+            position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center;
+            backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);
+        }
+        .logo { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 1.5rem; letter-spacing: 5px; color: var(--primary); text-decoration: none; transition: color 0.3s; }
+        .logo:hover { color: var(--sage); }
+        nav { display: flex; gap: 2.5rem; align-items: center; }
+        nav a { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); text-decoration: none; transition: color 0.3s ease; }
+        nav a:hover { color: var(--sage); }
+        nav a.nav-cta { background: var(--primary); color: var(--white); padding: 0.75rem 1.5rem; transition: all 0.3s; }
+        nav a.nav-cta:hover { background: var(--sage); color: var(--primary); }
+
+        /* Mobile Menu */
+        .menu-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; }
+        .menu-toggle span { width: 25px; height: 2px; background: var(--primary); transition: all 0.3s ease; }
+
+        /* Hero */
+        .hero {
+            position: relative; height: 85vh; min-height: 600px; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background-image: url('pexels-helenalopes-4453058.jpg'); background-size: cover; background-position: center top;
+            filter: brightness(0.5); z-index: 0;
+        }
+        .hero-content { position: relative; z-index: 1; padding: 2rem; max-width: 900px; opacity: 0; animation: fadeUp 1.2s forwards 0.3s; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1.5rem; letter-spacing: 12px; color: var(--white); }
+        .hero p { font-size: 1.4rem; color: var(--white); margin: 0 auto 3rem; max-width: 600px; }
+        .cta-button {
+            display: inline-block; padding: 1rem 3rem; background: var(--white); color: var(--primary);
+            text-decoration: none; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; transition: all 0.3s ease;
+            border: 2px solid var(--white);
+        }
+        .cta-button:hover { background: transparent; color: var(--white); }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Sections */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 5%; }
+        section { padding: 6rem 0; }
+        .section-title { text-align: center; font-size: 2rem; margin-bottom: 4rem; letter-spacing: 6px; color: var(--primary); }
+
+        /* About */
+        .about-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .about-image img { width: 100%; border-radius: 2px; display: block; object-fit: cover; min-height: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+        .about-content p { margin-bottom: 1.5rem; color: var(--secondary); font-size: 1.05rem; }
+        .read-more { display: inline-block; color: var(--link); text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-top: 1rem; border-bottom: 1px solid var(--sage); transition: all 0.3s; }
+        .read-more:hover { color: var(--sage); padding-left: 5px; }
+
+        /* Services */
+        .services { background: var(--cream); }
+        .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; max-width: 1000px; margin: 0 auto; }
+        .service-card {
+            background: var(--white); padding: 3rem; border-radius: 2px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        .service-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+        .service-card h3 { font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--primary); }
+        .service-card p { color: var(--secondary); margin-bottom: 1.5rem; line-height: 1.8; }
+
+        /* WEDDING HIGHLIGHT */
+        .wedding-highlight { background-color: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative; }
+        .wedding-container { display: flex; align-items: center; justify-content: center; max-width: 1000px; margin: 0 auto; padding: 0 5%; }
+        .wedding-text { text-align: center; padding: 2rem; }
+        .wedding-highlight h2 { font-size: 2.2rem; margin-bottom: 1rem; letter-spacing: 5px; color: var(--primary); }
+        .wedding-highlight p { color: var(--secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .wedding-border { border: 1px solid var(--sage); padding: 3rem; position: relative; }
+        .wedding-border::before { content: '♥'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--white); padding: 0 10px; color: var(--sage); font-size: 1.2rem; }
+
+        /* Gallery */
+        .gallery { background: var(--white); }
+        .gallery-intro { text-align: center; margin-bottom: 3rem; font-style: italic; color: var(--secondary); }
+        .gallery-intro a { color: var(--link); text-decoration: none; border-bottom: 1px solid var(--sage); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .gallery-item { aspect-ratio: 1 / 1; overflow: hidden; border-radius: 2px; transition: transform 0.3s; }
+        .gallery-item:hover { transform: scale(1.03); }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .gallery-item.instagram-tile { background: var(--sage); display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .gallery-item.instagram-tile a { color: var(--white); text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 1rem; transition: opacity 0.3s; }
+        .gallery-item.instagram-tile a:hover { opacity: 0.8; }
+        .gallery-item.instagram-tile svg { width: 48px; height: 48px; fill: #ffffff; margin-bottom: 10px; display: block; }
+
+        /* Testimonials */
+        .testimonials { background: var(--sage); color: var(--primary); }
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+        .testimonial { background: rgba(255,255,255,0.5); padding: 2.5rem; border-radius: 2px; backdrop-filter: blur(5px); }
+        .testimonial p { font-style: italic; margin-bottom: 1.5rem; line-height: 1.8; }
+        .testimonial-author { font-size: 0.9rem; color: var(--primary); }
+
+        /* Tips */
+        .pet-care-tips { background: var(--cream); }
+        .tips-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .tip-card { background: var(--white); border-radius: 2px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s; border: 1px solid var(--border); }
+        .tip-card:hover { transform: translateY(-5px); }
+        .tip-card-content { padding: 2rem; }
+        .tip-card-meta { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--sage); margin-bottom: 1rem; }
+        .tip-card h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+        .tip-card p { color: var(--secondary); margin-bottom: 1.5rem; }
+        .tip-card a { color: var(--link); text-decoration: none; font-size: 0.9rem; border-bottom: 1px solid var(--sage); }
+
+        /* Service Areas */
+        .service-areas { background: var(--white); border-top: 1px solid var(--border); }
+        .areas { text-align: center; }
+        .areas p { margin-bottom: 2rem; color: var(--secondary); }
+        .suburb-selector { margin: 2rem auto; max-width: 400px; }
+        .suburb-selector label { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; color: var(--secondary); }
+        .suburb-selector select { width: 100%; padding: 1rem; border: 1px solid var(--border); font-family: 'Georgia', serif; background: var(--cream); color: var(--primary); }
+
+        /* Contact & Footer */
+        .contact { background: var(--primary); color: var(--white); padding: 5rem 0; text-align: center; }
+        .contact h2 { color: var(--white); margin-bottom: 1rem; }
+        .contact p { margin-bottom: 2rem; opacity: 0.9; font-style: italic; }
+        .contact-button { background: var(--white); color: var(--primary); border: 2px solid var(--white); }
+        .contact-button:hover { background: transparent; color: var(--white); }
+
+        footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; }
+        .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; color: var(--primary); }
+        .footer-social { display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+        .footer-social a { color: var(--secondary); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; }
+        .footer-social a:hover { color: var(--sage); }
+        .footer-social svg { width: 20px; height: 20px; fill: currentColor; }
+        .footer-links a, .footer-contact a { color: var(--secondary); text-decoration: none; margin: 0 10px; transition: color 0.3s; }
+        .footer-links a:hover, .footer-contact a:hover { color: var(--sage); }
+        .footer-legal { margin: 1.5rem 0; }
+        .footer-copyright { font-size: 0.85rem; color: var(--secondary); margin-top: 1.5rem; }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 { font-size: 2.5rem; letter-spacing: 6px; }
+            .about-wrapper, .services-grid, .testimonial-grid, .tips-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .menu-toggle { display: flex; z-index: 1001; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 280px; height: 100vh;
+                background: var(--white); flex-direction: column; justify-content: flex-start;
+                padding: 6rem 2rem 2rem; box-shadow: -5px 0 20px rgba(0,0,0,0.1); transition: right 0.3s ease;
+            }
+            nav.active { right: 0; }
+            nav a { padding: 1rem 0; border-bottom: 1px solid var(--border); width: 100%; text-align: left; }
+            .wedding-border { border: none; padding: 1rem; }
+            .wedding-border::before { display: none; }
+            .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .menu-toggle.active span:nth-child(2) { opacity: 0; }
+            .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: var(--primary); color: var(--white); padding: 8px 16px; z-index: 10000; }
+        .skip-link:focus { top: 0; }
+    </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<div class="intro-splash" id="introSplash">
+    <h1>ASH & HOUND</h1>
+</div>
+
+<header>
+    <a href="index.html" class="logo">ASH & HOUND</a>
+    <nav id="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="blog-in-home-pet-sitting-vs-boarding-brisbane.html">Blog</a>
+        <a href="enquiry.html" class="nav-cta">Enquire</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+    </div>
+</header>
+
+<main id="main">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>ASH & HOUND</h1>
+            <p>Boutique pet care for Brisbane's most devoted pet owners</p>
+            <a href="enquiry.html" class="cta-button">Book Now</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-image">
+                    <img src="IMG_7589.jpeg" alt="Ash with dog">
+                </div>
+                <div class="about-content">
+                    <h2>About Us</h2>
+                    <p>We're a small, trusted team of experienced pet sitters offering professional pet care services across Brisbane. We work with a limited number of clients at a time to ensure each pet receives dedicated attention and personalised care from the same familiar faces.</p>
+                    <p>Whether your pet is anxious, elderly, or simply prefers their home routine, our team provides reliable pet sitting that works around your pet's needs and your schedule. Every sitter is hand-selected and trained to our high standards.</p>
+                    <a href="about.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>In-Home Pet Sitting</h3>
+                    <p>Your pet stays in their own home with the same familiar sitter. Choose from standard live-in overnight stays or constant care with day and night supervision.</p>
+                    <a href="in-home-sitting.html" class="read-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <h3>Private Boarding</h3>
+                    <p>Your pet stays with one of our trusted sitters in their pet-friendly home. Indoor sleeping, safety and continuous supervision in a quiet, secure home.</p>
+                    <a href="boarding.html" class="read-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wedding-highlight">
+        <div class="container">
+            <div class="wedding-container">
+                <div class="wedding-text">
+                    <div class="wedding-border">
+                        <h2>Weddings & Events</h2>
+                        <p>Don't say "I Do" without your best friend. We provide professional chaperoning, styling, and transport so your dog can be part of your wedding photos without the stress.</p>
+                        <a href="wedding-chaperone.html" class="cta-button" style="border-color: var(--primary); background: transparent; color: var(--primary);">View Wedding Package</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            <div class="gallery-intro">
+                <p>To see more, visit our <a href="https://instagram.com/ashandhound" target="_blank">Instagram @ashandhound</a></p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="Gallery/gallery-1.jpg" alt="Dog enjoying in-home pet sitting care in Brisbane"></div>
+                <div class="gallery-item"><img src="Gallery/gallery-2.jpg" alt="Cat receiving premium boarding care"></div>
+                <div class="gallery-item"><img src="Gallery/gallery-3.jpg" alt="Happy dog during pet sitting visit"></div>
+                <div class="gallery-item"><img src="Gallery/gallery-4.jpg" alt="Comfortable pet during overnight care"></div>
+                <div class="gallery-item"><img src="Gallery/gallery-5.jpg" alt="Professional pet care in Brisbane"></div>
+
+                <div class="gallery-item instagram-tile">
+                    <a href="https://instagram.com/ashandhound" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                        <span>@ashandhound</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"Ash stayed in our home for two weeks with our anxious rescue dachshund who has never settled with anyone else. Worth every penny for the peace of mind while we travelled to Europe."</p>
+                    <span class="testimonial-author">— Sarah, Hamilton</span>
+                </div>
+                <div class="testimonial">
+                    <p>"We've trusted Ash with overnight care for our dogs for two years. She handles their medication schedules perfectly and updates us regularly. She has become a family member."</p>
+                    <span class="testimonial-author">— Michael, Ascot</span>
+                </div>
+                <div class="testimonial">
+                    <p>"Finding someone reliable and trustworthy was difficult after our last sitter moved away. Ash stayed with our elderly spaniel during our daughter's wedding week. Professional and genuinely caring."</p>
+                    <span class="testimonial-author">— Jennifer, New Farm</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pet-care-tips">
+        <div class="container">
+            <h2 class="section-title">Pet Care Tips</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-card-content">
+                        <p class="tip-card-meta">New Farm</p>
+                        <h3>What Anxious Dog Owners Need to Know</h3>
+                        <p>Finding reliable pet sitting for a nervous dog takes more than a quick search. Here's what to look for in a sitter.</p>
+                        <a href="blog-pet-sitting-new-farm-anxious-dogs.html">Read More →</a>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-card-content">
+                        <p class="tip-card-meta">Brisbane</p>
+                        <h3>Holiday Pet Care: Preparing Your Pet for Time Away</h3>
+                        <p>Step-by-step guidance to keep anxious, senior, or special-needs pets settled while you travel.</p>
+                        <a href="blog-holiday-pet-care-brisbane.html">Read More →</a>
+                    </div>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-card-content">
+                        <p class="tip-card-meta">Brisbane</p>
+                        <h3>Senior Pet Care: What Changes as Pets Age</h3>
+                        <p>Gentle steps to support older dogs and cats with calm in-home care or boutique boarding across Brisbane.</p>
+                        <a href="blog-senior-pet-care-brisbane.html">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-areas">
+        <div class="container">
+            <h2 class="section-title">Service Areas</h2>
+            <div class="areas">
+                <p>Providing private pet care services across Brisbane</p>
+                <div class="suburb-selector">
+                    <label for="suburbs">Brisbane Suburbs</label>
+                    <select id="suburbs" name="suburbs">
+                        <option value="">— All service areas —</option>
+                        <optgroup label="Inner City">
+                            <option value="ascot">Ascot</option>
+                            <option value="hamilton">Hamilton</option>
+                            <option value="new-farm">New Farm</option>
+                            <option value="teneriffe">Teneriffe</option>
+                        </optgroup>
+                        <optgroup label="Eastern Suburbs"><option value="bulimba">Bulimba</option></optgroup>
+                    </select>
+                </div>
+                <p style="margin-top: 2rem; font-style: italic;">Travel fees may apply for locations outside central Brisbane.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Ready to Book?</h2>
+        <p>Limited availability. Get in touch to discuss your pet's needs.</p>
+        <a href="enquiry.html" class="cta-button contact-button">Get in Touch</a>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-brand">ASH & HOUND</div>
+    <div class="footer-social">
+        <a href="https://instagram.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Instagram
+        </a>
+        <a href="https://facebook.com/ashandhound" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            Facebook
+        </a>
+    </div>
+    <div class="footer-contact">
+        <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
+        <a href="tel:0401606603">0401 606 603</a>
+    </div>
+    <div class="footer-legal">
+        <a href="pricing.html">Pricing</a> | <a href="terms-of-service.html">Terms</a> | <a href="privacy-policy.html">Privacy</a>
+    </div>
+    <p class="footer-copyright">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+</footer>
+
+<script>
+    window.addEventListener('load', function() {
+        setTimeout(function() { document.getElementById('introSplash').classList.add('fade-out'); }, 2500);
+        setTimeout(function() { document.getElementById('introSplash').style.display = 'none'; }, 3300);
+    });
+    function toggleMenu() {
+        document.getElementById('nav').classList.toggle('active');
+        document.getElementById('menuToggle').classList.toggle('active');
+    }
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('active');
+            document.getElementById('menuToggle').classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
