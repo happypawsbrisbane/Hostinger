@@ -50,10 +50,8 @@
         }
 
         .enquiry-wrapper {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 4rem;
-            align-items: start;
+            display: flex;
+            justify-content: center;
         }
 
         /* Form Container */
@@ -62,6 +60,8 @@
             padding: 3rem;
             border: 1px solid var(--border);
             box-shadow: 0 10px 40px rgba(0,0,0,0.03);
+            width: 100%;
+            max-width: 600px;
         }
 
         .form-header h1 { font-size: 2rem; margin-bottom: 0.5rem; letter-spacing: 5px; }
@@ -115,13 +115,6 @@
         }
         button.submit-btn:hover { background: var(--sage); color: var(--primary); }
 
-        /* Sidebar Info */
-        .sidebar-info { padding-top: 1rem; }
-        .info-block { margin-bottom: 3rem; }
-        .info-block h3 { font-size: 1rem; color: var(--dark-sage); margin-bottom: 0.5rem; }
-        .info-block p { font-size: 1rem; color: var(--secondary); margin-bottom: 0.5rem; }
-        .info-block a { color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--sage); }
-        
         /* FOOTER (MATCHING INDEX) */
         footer { background: var(--white); padding: 3rem 5%; border-top: 1px solid var(--border); text-align: center; margin-top: 4rem; }
         .footer-brand { font-size: 1.3rem; letter-spacing: 4px; margin-bottom: 1rem; font-family: 'Helvetica Neue', sans-serif; }
@@ -133,10 +126,6 @@
         .footer-copyright { font-size: 0.85rem; color: var(--secondary); margin-top: 1.5rem; }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
-            .enquiry-wrapper { grid-template-columns: 1fr; gap: 3rem; }
-            .sidebar-info { order: -1; text-align: center; padding-top: 0; }
-        }
 
         @media (max-width: 768px) {
             .menu-toggle { display: flex; z-index: 1001; }
@@ -227,19 +216,6 @@
                 </form>
                 </div>
 
-            <div class="sidebar-info">
-                <div class="info-block">
-                    <h3>New Clients</h3>
-                    <p>We also need a complimentary Meet & Greet for all new clients. This will ensure that your pet is comfortable with us before the booking.</p>
-                </div>
-
-                <div class="info-block">
-                    <h3>Direct Contact</h3>
-                    <p>Rather talk?<br>
-                    <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a><br>
-                    <a href="tel:0401606603">0401 606 603</a></p>
-                </div>
-            </div>
 
         </div>
     </section>
