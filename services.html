@@ -100,18 +100,21 @@
 
         /* Hero */
         .services-hero {
-            background: var(--cream);
-            padding: 6rem 5% 4rem;
+            position: relative;
+            padding: 8rem 5% 6rem;
             text-align: center;
+            background: linear-gradient(rgba(45,45,45,0.6), rgba(45,45,45,0.6)), url('Facetune_24012026172540.jpeg') center/cover no-repeat;
+            color: var(--white);
         }
         .services-hero h1 {
             font-size: 3rem;
             letter-spacing: 8px;
+            color: var(--white);
             margin-bottom: 1.5rem;
         }
         .services-hero p {
             font-size: 1.15rem;
-            color: var(--secondary);
+            color: rgba(255,255,255,0.9);
             font-style: italic;
             max-width: 600px;
             margin: 0 auto 3rem;
@@ -126,20 +129,21 @@
         }
         .service-nav a {
             padding: 1rem 2rem;
-            border: 1px solid var(--border);
+            border: 1px solid var(--white);
             text-decoration: none;
-            color: var(--primary);
+            color: var(--white);
             font-family: 'Helvetica Neue', Arial, sans-serif;
             font-size: 0.8rem;
             letter-spacing: 2px;
+            background: rgba(255,255,255,0.1);
             text-transform: uppercase;
             transition: all 0.3s ease;
-            background: var(--white);
+            backdrop-filter: blur(5px);
         }
         .service-nav a:hover {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
+            background: var(--white);
+            color: var(--primary);
+            border-color: var(--white);
         }
 
         /* Section Styles */
@@ -153,6 +157,16 @@
         .section-header {
             text-align: center;
             margin-bottom: 4rem;
+        }
+        .section-header-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2rem;
+            display: block;
+            border: 4px solid var(--sage);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .section-header h2 {
             font-size: 2.2rem;
@@ -618,6 +632,7 @@
 <!-- ============================================ -->
 <section id="in-home-sitting" class="service-section">
     <div class="section-header">
+        <img src="IMG_2734.jpeg" alt="In-home pet sitting care" class="section-header-img">
         <span class="pill-badge">Familiar Surroundings</span>
         <h2>In-Home Pet Sitting</h2>
         <p class="subtitle">Your pet stays home. We move in. Ideal for pets who thrive in familiar surroundings and prefer the comfort of their own space.</p>
@@ -700,6 +715,7 @@
 <!-- ============================================ -->
 <section id="private-boarding" class="service-section alt-bg">
     <div class="section-header">
+        <img src="IMG_2691.jpeg" alt="Private pet boarding" class="section-header-img">
         <span class="pill-badge">Limited Capacity</span>
         <h2>Private Boarding</h2>
         <p class="subtitle">Your pet stays in a trusted sitter's home with dedicated one-on-one care. Consistent companionship, regular exercise, and the calm of a real home environment - not a kennel.</p>
@@ -741,6 +757,7 @@
 <!-- ============================================ -->
 <section id="wedding-chaperone" class="service-section">
     <div class="section-header">
+        <img src="IMG_2477.jpeg" alt="Wedding dog chaperone" class="section-header-img">
         <span class="pill-badge">Special Events</span>
         <h2>Wedding Chaperone</h2>
         <p class="subtitle">Your best friend, at your biggest moment. We are your dog's "Plus One" - dedicated solely to their care, styling, and happiness throughout your event.</p>
