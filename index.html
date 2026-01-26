@@ -115,10 +115,57 @@
 
         /* About */
         .about-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-image img { width: 100%; border-radius: 2px; display: block; object-fit: cover; min-height: 500px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
         .about-content p { margin-bottom: 1.5rem; color: var(--secondary); font-size: 1.05rem; }
         .read-more { display: inline-block; color: var(--link); text-decoration: none; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 0.9rem; letter-spacing: 1px; margin-top: 1rem; border-bottom: 1px solid var(--sage); transition: all 0.3s; }
         .read-more:hover { color: var(--sage); padding-left: 5px; }
+
+        /* Trust Card */
+        .trust-card {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .trust-card::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 1px solid var(--sage);
+            pointer-events: none;
+        }
+        .trust-badge {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+        .trust-badge:last-child { margin-bottom: 0; }
+        .trust-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--sage);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .trust-icon svg { width: 24px; height: 24px; fill: var(--white); }
+        .trust-text h4 {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        .trust-text p { color: var(--secondary); font-size: 0.95rem; margin: 0; line-height: 1.6; }
 
         /* Services */
         .services { background: var(--cream); }
@@ -202,6 +249,8 @@
         @media (max-width: 968px) {
             .hero h1 { font-size: 2.5rem; letter-spacing: 6px; }
             .about-wrapper, .services-grid, .testimonial-grid, .tips-grid { grid-template-columns: 1fr; }
+            .trust-card { min-height: auto; padding: 2rem; order: 2; }
+            .trust-card::before { top: 15px; left: 15px; right: 15px; bottom: 15px; }
         }
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
@@ -258,8 +307,43 @@
     <section class="about" id="about">
         <div class="container">
             <div class="about-wrapper">
-                <div class="about-image">
-                    <img src="ash-with-dachshund.jpeg" alt="Ash with dachshund">
+                <div class="trust-card">
+                    <div class="trust-badge">
+                        <div class="trust-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                        </div>
+                        <div class="trust-text">
+                            <h4>Police Checked</h4>
+                            <p>All team members hold current police clearances for your peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm3-6c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/></svg>
+                        </div>
+                        <div class="trust-text">
+                            <h4>Fully Insured</h4>
+                            <p>Comprehensive public liability insurance on every booking.</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                        <div class="trust-text">
+                            <h4>Genuine Care</h4>
+                            <p>We treat every pet like family, with patience and understanding.</p>
+                        </div>
+                    </div>
+                    <div class="trust-badge">
+                        <div class="trust-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg>
+                        </div>
+                        <div class="trust-text">
+                            <h4>5-Star Reviews</h4>
+                            <p>Trusted by Brisbane pet owners with consistently excellent feedback.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="about-content">
                     <h2>About Us</h2>
