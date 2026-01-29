@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Client Onboarding | ASH & HOUND</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #2d2d2d;
+            --secondary: #666;
+            --accent: #b8caa5;
+            --sage: #b8caa5;
+            --cream: #faf8f5;
+            --white: #ffffff;
+            --border: #e8e3dd;
+            --link: #4d6b42;
+            --dark-sage: #8b9a7d;
+        }
+        body {
+            font-family: 'Georgia', serif;
+            color: var(--primary);
+            line-height: 1.8;
+            background: var(--white);
+        }
+        h1, h2, h3 {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        header {
+            background: var(--white);
+            padding: 2rem 5%;
+            border-bottom: 1px solid var(--border);
+            text-align: center;
+        }
+        .logo {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            color: var(--primary);
+        }
+        .page-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--secondary);
+            margin-top: 0.5rem;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+        .intro-text {
+            background: var(--cream);
+            padding: 1.25rem;
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            border-left: 3px solid var(--sage);
+        }
+        .section {
+            background: var(--cream);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 2px;
+        }
+        .section h2 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h3 {
+            font-size: 0.85rem;
+            margin: 1.5rem 0 1rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+        label {
+            display: block;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+            background: var(--white);
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .row-3 {
+            display: grid;
+            grid-template-columns: 2fr 2fr 1fr;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            .row, .row-3 { grid-template-columns: 1fr; }
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .radio-item, .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .radio-item input, .checkbox-item input {
+            width: auto;
+            accent-color: var(--dark-sage);
+        }
+        .radio-item label, .checkbox-item label {
+            margin: 0;
+            text-transform: none;
+            font-size: 0.95rem;
+            color: var(--primary);
+            letter-spacing: 0;
+        }
+        .pet-section {
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            background: var(--white);
+        }
+        .pet-section h3 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+            color: var(--dark-sage);
+        }
+        .add-pet-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--white);
+            border: 2px dashed var(--border);
+            border-radius: 2px;
+            color: var(--secondary);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-bottom: 1.25rem;
+        }
+        .add-pet-btn:hover {
+            border-color: var(--sage);
+            color: var(--primary);
+        }
+        .habits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.75rem;
+        }
+        .agreement-box {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 2px;
+            margin-top: 1rem;
+            border: 1px solid var(--sage);
+        }
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 2px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #444;
+        }
+        .btn-secondary {
+            background: var(--sage);
+            color: var(--primary);
+        }
+        .btn-secondary:hover {
+            background: var(--dark-sage);
+            color: var(--white);
+        }
+        .actions {
+            text-align: center;
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 5%;
+            border-top: 1px solid var(--border);
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        footer a { color: var(--secondary); text-decoration: none; }
+        .required { color: #c44; }
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ASH & HOUND</div>
+        <div class="page-title">New Client & Pet Onboarding</div>
+    </header>
+
+    <div class="container">
+        <div class="intro-text">
+            Welcome! Please complete this form so I can provide the best possible care for your pet. Fields marked with <span class="required">*</span> are required.
+        </div>
+
+        <div class="success-message" id="successMessage">
+            Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com
+        </div>
+
+        <form id="onboardingForm">
+            <!-- YOUR DETAILS -->
+            <div class="section">
+                <h2>Your Details</h2>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Your Name <span class="required">*</span></label>
+                        <input type="text" id="clientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" id="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Email <span class="required">*</span></label>
+                    <input type="email" id="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Address (if I'm coming to you)</label>
+                    <input type="text" id="address">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Emergency Contact</label>
+                        <input type="text" id="emergencyContact">
+                    </div>
+                    <div class="form-group">
+                        <label>Emergency Phone</label>
+                        <input type="tel" id="emergencyPhone">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Best way to contact you while away?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="contactText" name="contactMethod" value="Text" checked>
+                            <label for="contactText">Text</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactCall" name="contactMethod" value="Call">
+                            <label for="contactCall">Call</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="contactEmail" name="contactMethod" value="Email">
+                            <label for="contactEmail">Email</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>What are your departure and arrival dates/times? <span class="required">*</span></label>
+                    <textarea id="dates" placeholder="e.g., Arrival: 24th December midday; Departure: 27th December 4pm" required></textarea>
+                </div>
+            </div>
+
+            <!-- ABOUT YOUR PET(S) -->
+            <div class="section">
+                <h2>About Your Pet(s)</h2>
+
+                <div id="petSections">
+                    <div class="pet-section" id="pet1">
+                        <h3>Pet 1</h3>
+
+                        <div class="row-3">
+                            <div class="form-group">
+                                <label>Pet's Name <span class="required">*</span></label>
+                                <input type="text" class="petName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Breed <span class="required">*</span></label>
+                                <input type="text" class="petBreed" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" class="petDob">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Gender" value="Male" class="petGender">
+                                        <label>Male</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Gender" value="Female" class="petGender">
+                                        <label>Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Desexed?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Desexed" value="Yes" class="petDesexed">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Desexed" value="No" class="petDesexed">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Fully Vaccinated?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Vaccinated" value="Yes" class="petVaccinated">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Vaccinated" value="No" class="petVaccinated">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Toilet Trained?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Toilet" value="Yes" class="petToilet">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Toilet" value="No" class="petToilet">
+                                        <label>No</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet1Toilet" value="Mostly" class="petToilet">
+                                        <label>Mostly</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Can they be left alone for short periods?</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="pet1Alone" value="Yes" class="petAlone">
+                                    <label>Yes</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" name="pet1Alone" value="No" class="petAlone">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Health Conditions & Medications</label>
+                            <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Feeding - Breakfast (AM)</label>
+                            <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Feeding - Dinner (PM)</label>
+                            <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Treats?</label>
+                            <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="add-pet-btn" onclick="addPet()">+ Add Another Pet</button>
+            </div>
+
+            <!-- BEHAVIOUR & COMMUNICATION -->
+            <div class="section">
+                <h2>Behaviour & Communication</h2>
+
+                <div class="form-group">
+                    <label>How do you and your pet communicate?</label>
+                    <textarea id="communication" placeholder="e.g., signals for toilet, words they know, routines"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Where does your pet sleep at night?</label>
+                    <input type="text" id="sleepLocation" placeholder="e.g., Dog bed on floor in bedroom">
+                </div>
+
+                <div class="form-group">
+                    <label>Any behaviours I should be mindful of?</label>
+                    <textarea id="behaviours" placeholder="e.g., reactive, doesn't mix with other animals, biting"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Does your pet have any of these habits?</label>
+                    <div class="habits-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitDigging" value="Digging">
+                            <label for="habitDigging">Digging</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitScratching" value="Scratching">
+                            <label for="habitScratching">Scratching</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitBarking" value="Excessive Barking">
+                            <label for="habitBarking">Excessive Barking</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitPhobias" value="Phobias">
+                            <label for="habitPhobias">Phobias</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitEscaping" value="Escaping/Jumping">
+                            <label for="habitEscaping">Escaping/Jumping</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitChewing" value="Chewing">
+                            <label for="habitChewing">Chewing</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="habitWhimpering" value="Whimpering">
+                            <label for="habitWhimpering">Whimpering</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Any tips or tricks?</label>
+                    <input type="text" id="tips">
+                </div>
+            </div>
+
+            <!-- HOUSEHOLD -->
+            <div class="section">
+                <h2>Household (For In-Home Sits)</h2>
+
+                <div class="form-group">
+                    <label>House rules I should know about?</label>
+                    <textarea id="houseRules"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Home security alarm/system?</label>
+                    <input type="text" id="security" placeholder="If yes, please leave instructions">
+                </div>
+
+                <div class="form-group">
+                    <label>Security cameras or pet cams inside?</label>
+                    <input type="text" id="cameras" placeholder="If yes, where are they located?">
+                </div>
+            </div>
+
+            <!-- EMERGENCY INFO -->
+            <div class="section">
+                <h2>Emergency Info</h2>
+                <p style="color: var(--secondary); font-size: 0.9rem; margin-bottom: 1rem; font-style: italic;">Please let your vet know you're going away in advance.</p>
+
+                <div class="form-group">
+                    <label>Vet Name</label>
+                    <input type="text" id="vetName">
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Vet Phone</label>
+                        <input type="tel" id="vetPhone">
+                    </div>
+                    <div class="form-group">
+                        <label>Vet Address</label>
+                        <input type="text" id="vetAddress">
+                    </div>
+                </div>
+            </div>
+
+            <!-- AUTHORISATIONS -->
+            <div class="section">
+                <h2>Authorisations</h2>
+
+                <div class="form-group">
+                    <label>In case of emergency, do you authorise veterinary care? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="vetAuthYes" name="vetAuth" value="Yes" required>
+                            <label for="vetAuthYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="vetAuthNo" name="vetAuth" value="No">
+                            <label for="vetAuthNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you have your own pet insurance?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="insuranceYes" name="insurance" value="Yes">
+                            <label for="insuranceYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="insuranceNo" name="insurance" value="No">
+                            <label for="insuranceNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Do you consent for your pet/home to be posted on social media? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="socialYes" name="social" value="Yes" required>
+                            <label for="socialYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="socialNo" name="social" value="No">
+                            <label for="socialNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Anything else you'd like me to know?</label>
+                    <textarea id="additionalNotes"></textarea>
+                </div>
+
+                <div class="agreement-box">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="agreeTerms" required>
+                        <label for="agreeTerms">I have read and agree to the <a href="/terms-of-service" target="_blank" style="color: var(--link);">Service Terms and Cancellation Policy</a> <span class="required">*</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button type="button" class="btn" onclick="copyForm()">Copy to Clipboard</button>
+                <button type="button" class="btn btn-secondary" onclick="emailForm()">Open in Email</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>ASH & HOUND | <a href="mailto:hello@ashandhound.com">hello@ashandhound.com</a> | <a href="tel:0401606603">0401 606 603</a></p>
+        <p style="margin-top: 0.5rem;">&copy; 2025 ASH & HOUND. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let petCount = 1;
+
+        function addPet() {
+            petCount++;
+            const petSection = document.createElement('div');
+            petSection.className = 'pet-section';
+            petSection.id = `pet${petCount}`;
+            petSection.innerHTML = `
+                <h3>Pet ${petCount}</h3>
+                <div class="row-3">
+                    <div class="form-group">
+                        <label>Pet's Name</label>
+                        <input type="text" class="petName">
+                    </div>
+                    <div class="form-group">
+                        <label>Breed</label>
+                        <input type="text" class="petBreed">
+                    </div>
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="date" class="petDob">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Gender" value="Male" class="petGender">
+                                <label>Male</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Gender" value="Female" class="petGender">
+                                <label>Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Desexed?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Desexed" value="Yes" class="petDesexed">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Desexed" value="No" class="petDesexed">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Fully Vaccinated?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Vaccinated" value="Yes" class="petVaccinated">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Vaccinated" value="No" class="petVaccinated">
+                                <label>No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Toilet Trained?</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Toilet" value="Yes" class="petToilet">
+                                <label>Yes</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Toilet" value="No" class="petToilet">
+                                <label>No</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="pet${petCount}Toilet" value="Mostly" class="petToilet">
+                                <label>Mostly</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Can they be left alone for short periods?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" name="pet${petCount}Alone" value="Yes" class="petAlone">
+                            <label>Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" name="pet${petCount}Alone" value="No" class="petAlone">
+                            <label>No</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Health Conditions & Medications</label>
+                    <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Feeding - Breakfast (AM)</label>
+                    <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                </div>
+                <div class="form-group">
+                    <label>Feeding - Dinner (PM)</label>
+                    <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                </div>
+                <div class="form-group">
+                    <label>Treats?</label>
+                    <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                </div>
+            `;
+            document.getElementById('petSections').appendChild(petSection);
+        }
+
+        function getFormData() {
+            const getValue = (id) => document.getElementById(id)?.value || '';
+            const getRadio = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value || '';
+
+            const habits = [];
+            ['habitDigging', 'habitScratching', 'habitBarking', 'habitPhobias', 'habitEscaping', 'habitChewing', 'habitWhimpering'].forEach(id => {
+                if (document.getElementById(id)?.checked) {
+                    habits.push(document.getElementById(id).value);
+                }
+            });
+
+            const pets = [];
+            document.querySelectorAll('.pet-section').forEach((section, index) => {
+                const name = section.querySelector('.petName')?.value;
+                if (name) {
+                    pets.push({
+                        name: name,
+                        breed: section.querySelector('.petBreed')?.value || '',
+                        dob: section.querySelector('.petDob')?.value || '',
+                        gender: section.querySelector(`.petGender:checked`)?.value || '',
+                        desexed: section.querySelector(`.petDesexed:checked`)?.value || '',
+                        vaccinated: section.querySelector(`.petVaccinated:checked`)?.value || '',
+                        toilet: section.querySelector(`.petToilet:checked`)?.value || '',
+                        alone: section.querySelector(`.petAlone:checked`)?.value || '',
+                        health: section.querySelector('.petHealth')?.value || '',
+                        feedingAM: section.querySelector('.petFeedingAM')?.value || '',
+                        feedingPM: section.querySelector('.petFeedingPM')?.value || '',
+                        treats: section.querySelector('.petTreats')?.value || ''
+                    });
+                }
+            });
+
+            return {
+                client: {
+                    name: getValue('clientName'),
+                    phone: getValue('phone'),
+                    email: getValue('email'),
+                    address: getValue('address'),
+                    emergencyContact: getValue('emergencyContact'),
+                    emergencyPhone: getValue('emergencyPhone'),
+                    contactMethod: getRadio('contactMethod'),
+                    dates: getValue('dates')
+                },
+                pets: pets,
+                behaviour: {
+                    communication: getValue('communication'),
+                    sleepLocation: getValue('sleepLocation'),
+                    behaviours: getValue('behaviours'),
+                    habits: habits.join(', '),
+                    tips: getValue('tips')
+                },
+                household: {
+                    rules: getValue('houseRules'),
+                    security: getValue('security'),
+                    cameras: getValue('cameras')
+                },
+                emergency: {
+                    vetName: getValue('vetName'),
+                    vetPhone: getValue('vetPhone'),
+                    vetAddress: getValue('vetAddress')
+                },
+                auth: {
+                    vetAuth: getRadio('vetAuth'),
+                    insurance: getRadio('insurance'),
+                    social: getRadio('social'),
+                    notes: getValue('additionalNotes'),
+                    agreed: document.getElementById('agreeTerms')?.checked ? 'Yes' : 'No'
+                }
+            };
+        }
+
+        function formatFormText(data) {
+            let text = `ASH & HOUND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NEW CLIENT ONBOARDING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CLIENT DETAILS
+──────────────
+Name: ${data.client.name}
+Phone: ${data.client.phone}
+Email: ${data.client.email}
+Address: ${data.client.address || 'N/A'}
+Emergency Contact: ${data.client.emergencyContact || 'N/A'}
+Emergency Phone: ${data.client.emergencyPhone || 'N/A'}
+Preferred Contact: ${data.client.contactMethod}
+Dates: ${data.client.dates}
+
+`;
+
+            data.pets.forEach((pet, i) => {
+                text += `PET ${i + 1}
+──────
+Name: ${pet.name}
+Breed: ${pet.breed}
+DOB: ${pet.dob || 'N/A'}
+Gender: ${pet.gender || 'N/A'}
+Desexed: ${pet.desexed || 'N/A'}
+Vaccinated: ${pet.vaccinated || 'N/A'}
+Toilet Trained: ${pet.toilet || 'N/A'}
+Can Be Left Alone: ${pet.alone || 'N/A'}
+Health/Medications: ${pet.health || 'None'}
+Feeding AM: ${pet.feedingAM || 'N/A'}
+Feeding PM: ${pet.feedingPM || 'N/A'}
+Treats: ${pet.treats || 'N/A'}
+
+`;
+            });
+
+            text += `BEHAVIOUR & COMMUNICATION
+─────────────────────────
+Communication: ${data.behaviour.communication || 'N/A'}
+Sleep Location: ${data.behaviour.sleepLocation || 'N/A'}
+Behaviours to Note: ${data.behaviour.behaviours || 'None'}
+Habits: ${data.behaviour.habits || 'None'}
+Tips/Tricks: ${data.behaviour.tips || 'N/A'}
+
+HOUSEHOLD
+─────────
+House Rules: ${data.household.rules || 'N/A'}
+Security System: ${data.household.security || 'N/A'}
+Cameras: ${data.household.cameras || 'N/A'}
+
+EMERGENCY INFO
+──────────────
+Vet Name: ${data.emergency.vetName || 'N/A'}
+Vet Phone: ${data.emergency.vetPhone || 'N/A'}
+Vet Address: ${data.emergency.vetAddress || 'N/A'}
+
+AUTHORISATIONS
+──────────────
+Vet Care Authorised: ${data.auth.vetAuth}
+Pet Insurance: ${data.auth.insurance || 'N/A'}
+Social Media Consent: ${data.auth.social}
+Additional Notes: ${data.auth.notes || 'None'}
+Terms Agreed: ${data.auth.agreed}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Submitted via ASH & HOUND Onboarding Form
+ashandhound.com
+`;
+            return text;
+        }
+
+        function validateForm() {
+            const form = document.getElementById('onboardingForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return false;
+            }
+            return true;
+        }
+
+        function copyForm() {
+            if (!validateForm()) return;
+
+            const data = getFormData();
+            const text = formatFormText(data);
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showSuccess('Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com');
+                }).catch(() => {
+                    fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            textarea.style.position = 'fixed';
+            textarea.style.opacity = '0';
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showSuccess('Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com');
+            } catch (e) {
+                showSuccess('Unable to copy automatically. Please select the text below and copy manually.');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        function showSuccess(message) {
+            const el = document.getElementById('successMessage');
+            el.textContent = message;
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => { el.style.display = 'none'; }, 5000);
+        }
+
+        function emailForm() {
+            if (!validateForm()) return;
+
+            const data = getFormData();
+            const text = formatFormText(data);
+            const subject = encodeURIComponent(`New Client Onboarding - ${data.client.name}`);
+            const body = encodeURIComponent(text);
+            const mailtoUrl = `mailto:hello@ashandhound.com?subject=${subject}&body=${body}`;
+
+            // mailto URLs have a ~2000 char limit in most browsers
+            if (mailtoUrl.length > 2000) {
+                // Copy to clipboard first, then open a simpler mailto
+                const shortBody = encodeURIComponent('Please find my onboarding form details pasted below.\n\n(Form data has been copied to your clipboard — please paste it here)');
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        showSuccess('Form data copied to clipboard. Paste it into the email that opens.');
+                        window.location.href = `mailto:hello@ashandhound.com?subject=${subject}&body=${shortBody}`;
+                    });
+                } else {
+                    fallbackCopy(text);
+                    window.location.href = `mailto:hello@ashandhound.com?subject=${subject}&body=${shortBody}`;
+                }
+            } else {
+                window.location.href = mailtoUrl;
+            }
+        }
+    </script>
+</body>
+</html>
