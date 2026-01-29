@@ -458,6 +458,121 @@
                             <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
                         </div>
                     </div>
+
+                    <div class="pet-section" id="pet2">
+                        <h3>Pet 2</h3>
+
+                        <div class="row-3">
+                            <div class="form-group">
+                                <label>Pet's Name</label>
+                                <input type="text" class="petName">
+                            </div>
+                            <div class="form-group">
+                                <label>Breed</label>
+                                <input type="text" class="petBreed">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" class="petDob">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Gender" value="Male" class="petGender">
+                                        <label>Male</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Gender" value="Female" class="petGender">
+                                        <label>Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Desexed?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Desexed" value="Yes" class="petDesexed">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Desexed" value="No" class="petDesexed">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Fully Vaccinated?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Vaccinated" value="Yes" class="petVaccinated">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Vaccinated" value="No" class="petVaccinated">
+                                        <label>No</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Toilet Trained?</label>
+                                <div class="radio-group">
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Toilet" value="Yes" class="petToilet">
+                                        <label>Yes</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Toilet" value="No" class="petToilet">
+                                        <label>No</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="pet2Toilet" value="Mostly" class="petToilet">
+                                        <label>Mostly</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Can they be left alone for short periods?</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" name="pet2Alone" value="Yes" class="petAlone">
+                                    <label>Yes</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" name="pet2Alone" value="No" class="petAlone">
+                                    <label>No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Health Conditions & Medications</label>
+                            <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Feeding - Breakfast (AM)</label>
+                            <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Feeding - Dinner (PM)</label>
+                            <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Treats?</label>
+                            <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                        </div>
+                    </div>
                 </div>
 
                 <button type="button" class="add-pet-btn" onclick="addPet()">+ Add Another Pet</button>
@@ -636,7 +751,7 @@
     </footer>
 
     <script>
-        let petCount = 1;
+        let petCount = 2;
 
         function addPet() {
             petCount++;
