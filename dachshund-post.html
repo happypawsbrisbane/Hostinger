@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASH & HOUND - Dachshund Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f3f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .post-container {
+            width: 1080px;
+            height: 1080px;
+            background: #faf9f7;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+        }
+
+        .image-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                #d4cfc7 0%,
+                #c4b8a8 50%,
+                #b5a795 100%
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-placeholder span {
+            color: rgba(255,255,255,0.6);
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .content-section {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background: #faf9f7;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 70px 50px;
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 80px;
+            bottom: 80px;
+            width: 1px;
+            background: linear-gradient(
+                180deg,
+                transparent 0%,
+                #9ba893 20%,
+                #9ba893 80%,
+                transparent 100%
+            );
+        }
+
+        .logo-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            letter-spacing: 6px;
+            color: #2d3a2e;
+            margin-bottom: 50px;
+            font-weight: 400;
+        }
+
+        .availability-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #9ba893;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 44px;
+            font-weight: 300;
+            color: #2d3a2e;
+            line-height: 1.2;
+            margin-bottom: 30px;
+        }
+
+        .headline .accent {
+            display: block;
+            font-style: italic;
+            color: #9ba893;
+            font-size: 48px;
+        }
+
+        .dachshund-icon {
+            width: 80px;
+            height: auto;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .description {
+            font-size: 13px;
+            color: #6a6a6a;
+            line-height: 2;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .service-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+
+        .tag {
+            background: transparent;
+            border: 1px solid #d4d4d4;
+            padding: 8px 16px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #5a5a5a;
+        }
+
+        .tag.highlight {
+            background: #9ba893;
+            border-color: #9ba893;
+            color: white;
+        }
+
+        .months-available {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .month {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #2d3a2e;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .month::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #9ba893;
+        }
+
+        .month span {
+            font-size: 12px;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 1px;
+            display: block;
+            color: #9ba893;
+            margin-top: 5px;
+        }
+
+        .cta-link {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #2d3a2e;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .cta-link:hover {
+            color: #9ba893;
+        }
+
+        .cta-link .arrow {
+            width: 40px;
+            height: 1px;
+            background: #9ba893;
+            position: relative;
+        }
+
+        .cta-link .arrow::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-top: 1px solid #9ba893;
+            border-right: 1px solid #9ba893;
+            transform: rotate(45deg);
+        }
+
+        .corner-top {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-top: 1px solid #9ba893;
+            border-right: 1px solid #9ba893;
+        }
+
+        .corner-bottom {
+            position: absolute;
+            bottom: 40px;
+            right: 40px;
+            width: 60px;
+            height: 60px;
+            border-bottom: 1px solid #9ba893;
+            border-right: 1px solid #9ba893;
+        }
+
+        .website-footer {
+            position: absolute;
+            bottom: 50px;
+            right: 60px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #9ba893;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <div class="image-section">
+            <div class="image-placeholder">
+                <span>Dachshund Image Here</span>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="corner-top"></div>
+
+            <div class="logo-text">ASH & HOUND</div>
+
+            <div class="availability-label">Limited Availability</div>
+
+            <h1 class="headline">
+                Little dogs,
+                <span class="accent">big love</span>
+            </h1>
+
+            <svg class="dachshund-icon" viewBox="0 0 100 40" fill="#9ba893">
+                <ellipse cx="20" cy="25" rx="18" ry="12"/>
+                <ellipse cx="55" cy="22" rx="25" ry="10"/>
+                <circle cx="85" cy="18" r="10"/>
+                <ellipse cx="92" cy="14" rx="6" ry="4"/>
+                <rect x="12" y="32" width="4" height="8" rx="2"/>
+                <rect x="25" y="32" width="4" height="8" rx="2"/>
+                <rect x="50" y="28" width="4" height="10" rx="2"/>
+                <rect x="60" y="28" width="4" height="10" rx="2"/>
+                <ellipse cx="3" cy="25" rx="4" ry="2"/>
+            </svg>
+
+            <p class="description">
+                Boutique in-home pet sitting for your
+                sausage dog. Specialising in anxious
+                dachshunds who need calm, one-on-one
+                care in a loving home environment.
+            </p>
+
+            <div class="service-tags">
+                <span class="tag highlight">In-Home Sitting</span>
+                <span class="tag">Private Boarding</span>
+                <span class="tag">Brisbane</span>
+            </div>
+
+            <div class="months-available">
+                <div class="month">
+                    Feb
+                    <span>2026</span>
+                </div>
+                <div class="month">
+                    Apr
+                    <span>2026</span>
+                </div>
+            </div>
+
+            <a href="#" class="cta-link">
+                Enquire Now
+                <span class="arrow"></span>
+            </a>
+
+            <div class="corner-bottom"></div>
+        </div>
+
+        <div class="website-footer">ashandhound.com</div>
+    </div>
+</body>
+</html>
