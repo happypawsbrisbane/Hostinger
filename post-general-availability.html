@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASH & HOUND - General Availability Post</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f5f3f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .post-container {
+            width: 1080px;
+            height: 1080px;
+            background: #ffffff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
+        }
+
+        .frame {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            right: 30px;
+            bottom: 30px;
+            border: 1px solid #9ba893;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                #f8f6f3 0%,
+                #ebe7e0 40%,
+                #ddd7cc 100%
+            );
+        }
+
+        .content-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(255,255,255,0.95) 0%,
+                rgba(255,255,255,0.7) 30%,
+                rgba(255,255,255,0.4) 60%,
+                rgba(255,255,255,0.85) 100%
+            );
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 5;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 80px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            letter-spacing: 8px;
+            color: #2d3a2e;
+            font-weight: 400;
+        }
+
+        .logo-tagline {
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #9ba893;
+            margin-top: 8px;
+        }
+
+        .now-booking-badge {
+            background: #9ba893;
+            color: white;
+            padding: 15px 30px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .decorative-line {
+            width: 60px;
+            height: 1px;
+            background: #9ba893;
+            margin-bottom: 40px;
+        }
+
+        .headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 64px;
+            font-weight: 300;
+            color: #2d3a2e;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: #9ba893;
+        }
+
+        .subheadline {
+            font-size: 13px;
+            color: #6a6a6a;
+            line-height: 2;
+            max-width: 500px;
+            font-weight: 300;
+            margin-bottom: 50px;
+        }
+
+        .availability-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 45px;
+        }
+
+        .month-block {
+            text-align: center;
+        }
+
+        .month-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 48px;
+            color: #2d3a2e;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .month-year {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: #9ba893;
+            margin-top: 8px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: #d4d4d4;
+        }
+
+        .services {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 45px;
+        }
+
+        .service {
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #5a5a5a;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .service:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -18px;
+            color: #9ba893;
+        }
+
+        .cta-button {
+            background: #2d3a2e;
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #9ba893;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .location {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #9ba893;
+        }
+
+        .website {
+            font-size: 13px;
+            letter-spacing: 3px;
+            color: #2d3a2e;
+            font-weight: 400;
+        }
+
+        .corner-decor {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            z-index: 6;
+        }
+
+        .corner-tl {
+            top: 50px;
+            left: 50px;
+            border-top: 1px solid rgba(155, 168, 147, 0.4);
+            border-left: 1px solid rgba(155, 168, 147, 0.4);
+        }
+
+        .corner-tr {
+            top: 50px;
+            right: 50px;
+            border-top: 1px solid rgba(155, 168, 147, 0.4);
+            border-right: 1px solid rgba(155, 168, 147, 0.4);
+        }
+
+        .corner-bl {
+            bottom: 50px;
+            left: 50px;
+            border-bottom: 1px solid rgba(155, 168, 147, 0.4);
+            border-left: 1px solid rgba(155, 168, 147, 0.4);
+        }
+
+        .corner-br {
+            bottom: 50px;
+            right: 50px;
+            border-bottom: 1px solid rgba(155, 168, 147, 0.4);
+            border-right: 1px solid rgba(155, 168, 147, 0.4);
+        }
+
+        .side-text {
+            position: absolute;
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(155, 168, 147, 0.5);
+            z-index: 6;
+        }
+
+        .side-text.left {
+            left: 55px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: left center;
+        }
+
+        .side-text.right {
+            right: 55px;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            transform-origin: right center;
+        }
+    </style>
+</head>
+<body>
+    <div class="post-container">
+        <div class="frame"></div>
+
+        <div class="bg-image">
+            <div class="image-placeholder"></div>
+        </div>
+
+        <div class="content-overlay"></div>
+
+        <div class="corner-decor corner-tl"></div>
+        <div class="corner-decor corner-tr"></div>
+        <div class="corner-decor corner-bl"></div>
+        <div class="corner-decor corner-br"></div>
+
+        <span class="side-text left">Private Pet Care</span>
+        <span class="side-text right">Brisbane</span>
+
+        <div class="content">
+            <div class="header">
+                <div class="logo-section">
+                    <div class="logo-main">ASH & HOUND</div>
+                    <div class="logo-tagline">- Private Pet Care -</div>
+                </div>
+                <div class="now-booking-badge">Now Booking</div>
+            </div>
+
+            <div class="main-content">
+                <div class="decorative-line"></div>
+
+                <h1 class="headline">
+                    Your pet deserves<br>
+                    <em>exceptional</em> care
+                </h1>
+
+                <p class="subheadline">
+                    Limited availability for boutique in-home pet sitting
+                    and private boarding. Specialising in anxious and
+                    high-needs pets who thrive with one-on-one attention.
+                </p>
+
+                <div class="availability-section">
+                    <div class="month-block">
+                        <div class="month-name">February</div>
+                        <div class="month-year">2026</div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="month-block">
+                        <div class="month-name">April</div>
+                        <div class="month-year">2026</div>
+                    </div>
+                </div>
+
+                <div class="services">
+                    <span class="service">In-Home Sitting</span>
+                    <span class="service">Private Boarding</span>
+                    <span class="service">Anxious Pets Welcome</span>
+                </div>
+
+                <button class="cta-button">Enquire Now</button>
+            </div>
+
+            <div class="footer">
+                <span class="location">Brisbane, Australia</span>
+                <span class="website">ashandhound.com</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
