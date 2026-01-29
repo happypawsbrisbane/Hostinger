@@ -246,6 +246,19 @@
             margin-bottom: 1.5rem;
             text-align: center;
         }
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 2px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -259,11 +272,13 @@
             Welcome! Please complete this form so I can provide the best possible care for your pet. Fields marked with <span class="required">*</span> are required.
         </div>
 
-        <div class="success-message" id="successMessage">
-            Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com
-        </div>
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
 
         <form id="onboardingForm">
+            <input type="hidden" name="_subject" value="New Client Onboarding">
+            <input type="hidden" name="_replyto" id="hiddenReplyTo">
+            <textarea name="message" id="hiddenMessage" style="display:none;"></textarea>
             <!-- YOUR DETAILS -->
             <div class="section">
                 <h2>Your Details</h2>
@@ -609,8 +624,8 @@
             </div>
 
             <div class="actions">
-                <button type="button" class="btn" onclick="copyForm()">Copy to Clipboard</button>
-                <button type="button" class="btn btn-secondary" onclick="emailForm()">Open in Email</button>
+                <button type="submit" class="btn" id="submitBtn">Submit Form</button>
+                <button type="button" class="btn btn-secondary" onclick="copyForm()">Copy to Clipboard</button>
             </div>
         </form>
     </div>
@@ -809,9 +824,7 @@
         }
 
         function formatFormText(data) {
-            let text = `ASH & HOUND
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NEW CLIENT ONBOARDING
+            let text = `NEW CLIENT ONBOARDING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 CLIENT DETAILS
@@ -873,33 +886,89 @@ Pet Insurance: ${data.auth.insurance || 'N/A'}
 Social Media Consent: ${data.auth.social}
 Additional Notes: ${data.auth.notes || 'None'}
 Terms Agreed: ${data.auth.agreed}
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Submitted via ASH & HOUND Onboarding Form
-ashandhound.com
 `;
             return text;
         }
 
-        function validateForm() {
-            const form = document.getElementById('onboardingForm');
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return false;
-            }
-            return true;
-        }
-
-        function copyForm() {
-            if (!validateForm()) return;
+        // Handle form submission via Formspree
+        document.getElementById('onboardingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
 
             const data = getFormData();
             const text = formatFormText(data);
+            const submitBtn = document.getElementById('submitBtn');
+
+            // Populate hidden fields
+            document.getElementById('hiddenMessage').value = text;
+            document.getElementById('hiddenReplyTo').value = data.client.email;
+
+            // Update subject with client name
+            document.querySelector('input[name="_subject"]').value =
+                'New Client Onboarding - ' + data.client.name;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'SUBMITTING...';
+
+            fetch('https://formspree.io/f/myzbraal', {
+                method: 'POST',
+                body: new FormData(this),
+                headers: { 'Accept': 'application/json' }
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    showSuccess('Thank you! Your onboarding form has been submitted successfully. We\'ll be in touch soon.');
+                    document.getElementById('onboardingForm').reset();
+                    // Remove any dynamically added pet sections
+                    var petSections = document.getElementById('petSections');
+                    while (petSections.children.length > 1) {
+                        petSections.removeChild(petSections.lastChild);
+                    }
+                    petCount = 1;
+                } else {
+                    response.json().then(function(json) {
+                        showError(json.errors ? json.errors.map(function(e) { return e.message; }).join(', ') : 'Something went wrong. Please try again or email us directly at hello@ashandhound.com');
+                    });
+                }
+            })
+            .catch(function() {
+                showError('Network error. Please check your connection and try again, or email us directly at hello@ashandhound.com');
+            })
+            .finally(function() {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'SUBMIT FORM';
+            });
+        });
+
+        function showSuccess(message) {
+            var el = document.getElementById('successMessage');
+            document.getElementById('errorMessage').style.display = 'none';
+            el.textContent = message;
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function showError(message) {
+            var el = document.getElementById('errorMessage');
+            document.getElementById('successMessage').style.display = 'none';
+            el.textContent = message;
+            el.style.display = 'block';
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function copyForm() {
+            var form = document.getElementById('onboardingForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            var data = getFormData();
+            var text = formatFormText(data);
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
+                navigator.clipboard.writeText(text).then(function() {
                     showSuccess('Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com');
-                }).catch(() => {
+                }).catch(function() {
                     fallbackCopy(text);
                 });
             } else {
@@ -908,7 +977,7 @@ ashandhound.com
         }
 
         function fallbackCopy(text) {
-            const textarea = document.createElement('textarea');
+            var textarea = document.createElement('textarea');
             textarea.value = text;
             textarea.style.position = 'fixed';
             textarea.style.opacity = '0';
@@ -918,44 +987,9 @@ ashandhound.com
                 document.execCommand('copy');
                 showSuccess('Form copied to clipboard! You can now paste it into an email to hello@ashandhound.com');
             } catch (e) {
-                showSuccess('Unable to copy automatically. Please select the text below and copy manually.');
+                showError('Unable to copy automatically. Please email us at hello@ashandhound.com');
             }
             document.body.removeChild(textarea);
-        }
-
-        function showSuccess(message) {
-            const el = document.getElementById('successMessage');
-            el.textContent = message;
-            el.style.display = 'block';
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            setTimeout(() => { el.style.display = 'none'; }, 5000);
-        }
-
-        function emailForm() {
-            if (!validateForm()) return;
-
-            const data = getFormData();
-            const text = formatFormText(data);
-            const subject = encodeURIComponent(`New Client Onboarding - ${data.client.name}`);
-            const body = encodeURIComponent(text);
-            const mailtoUrl = `mailto:hello@ashandhound.com?subject=${subject}&body=${body}`;
-
-            // mailto URLs have a ~2000 char limit in most browsers
-            if (mailtoUrl.length > 2000) {
-                // Copy to clipboard first, then open a simpler mailto
-                const shortBody = encodeURIComponent('Please find my onboarding form details pasted below.\n\n(Form data has been copied to your clipboard — please paste it here)');
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(() => {
-                        showSuccess('Form data copied to clipboard. Paste it into the email that opens.');
-                        window.location.href = `mailto:hello@ashandhound.com?subject=${subject}&body=${shortBody}`;
-                    });
-                } else {
-                    fallbackCopy(text);
-                    window.location.href = `mailto:hello@ashandhound.com?subject=${subject}&body=${shortBody}`;
-                }
-            } else {
-                window.location.href = mailtoUrl;
-            }
         }
     </script>
 </body>
