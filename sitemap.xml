@@ -7,63 +7,87 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/enquiry.html</loc>
+    <loc>https://ashandhound.com/about</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/pricing.html</loc>
+    <loc>https://ashandhound.com/services</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/enquiry</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/pricing</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/in-home-sitting.html</loc>
+    <loc>https://ashandhound.com/in-home-sitting</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/boarding.html</loc>
+    <loc>https://ashandhound.com/boarding</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/privacy-policy.html</loc>
+    <loc>https://ashandhound.com/wedding-chaperone</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/partners</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/blog-holiday-pet-care-brisbane</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/blog-pet-sitting-new-farm-anxious-dogs</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/blog-senior-pet-care-brisbane</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/blog-in-home-pet-sitting-vs-boarding-brisbane</loc>
+    <lastmod>2025-01-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ashandhound.com/privacy-policy</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://ashandhound.com/terms-of-service.html</loc>
+    <loc>https://ashandhound.com/terms-of-service</loc>
     <lastmod>2025-01-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://ashandhound.com/blog-holiday-pet-care-brisbane.html</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ashandhound.com/blog-pet-sitting-new-farm-anxious-dogs.html</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ashandhound.com/blog-senior-pet-care-brisbane.html</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ashandhound.com/blog-in-home-pet-sitting-vs-boarding-brisbane.html</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
