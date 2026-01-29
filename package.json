@@ -1,0 +1,10 @@
+{
+  "name": "ash-and-hound",
+  "version": "1.0.0",
+  "description": "ASH & HOUND - Premium Pet Care Brisbane",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static site — no build step required'"
+  }
+}
