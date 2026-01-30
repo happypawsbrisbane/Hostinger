@@ -3,350 +3,468 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASH & HOUND - Groodle Post</title>
+    <title>Groodle Care Brisbane | ASH & HOUND</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: #f5f3f0;
+            background: #ffffff;
+            color: #2d3a2e;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            transition: all 0.3s;
+        }
+
+        .topbar.scrolled {
+            background: rgba(45,58,46,0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
+        }
+
+        .topbar-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            letter-spacing: 5px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .topbar-cta {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 10px 24px;
+            transition: all 0.3s;
+        }
+
+        .topbar-cta:hover {
+            background: #9ba893;
+            border-color: #9ba893;
+        }
+
+        /* Hero - full image with bottom overlay */
+        .hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-end;
             overflow: hidden;
         }
 
-        .post-container {
-            width: 1080px;
-            height: 1080px;
-            background: #2d3a2e;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.2);
-        }
-
-        .image-area {
+        .hero-img {
             position: absolute;
-            top: 50px;
-            left: 50px;
-            right: 50px;
-            height: 62%;
-            overflow: hidden;
-        }
-
-        .image-area img {
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 15%;
         }
 
-        .image-overlay {
+        .hero-overlay {
             position: absolute;
-            top: 50px;
-            left: 50px;
-            right: 50px;
-            height: 62%;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(
                 180deg,
-                transparent 60%,
-                rgba(45,58,46,0.3) 85%,
-                rgba(45,58,46,0.8) 100%
+                rgba(45,58,46,0.05) 0%,
+                rgba(45,58,46,0.15) 40%,
+                rgba(45,58,46,0.65) 70%,
+                rgba(45,58,46,0.92) 100%
             );
-            z-index: 1;
         }
 
-        .content-panel {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 38%;
-            background: #2d3a2e;
-            padding: 45px 55px;
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 60px 8%;
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            z-index: 2;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        .content-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 55px;
-            right: 55px;
-            height: 1px;
-            background: linear-gradient(
-                90deg,
-                transparent 0%,
-                rgba(155,168,147,0.4) 20%,
-                rgba(155,168,147,0.4) 80%,
-                transparent 100%
-            );
+        .hero-left {
+            max-width: 560px;
         }
 
-        .left-content {
-            flex: 1;
-            padding-right: 30px;
-        }
-
-        .tagline {
-            font-size: 9px;
+        .hero-badge {
+            display: inline-block;
+            font-size: 10px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9ba893;
-            margin-bottom: 18px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .headline {
+        .hero h1 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 44px;
+            font-size: clamp(40px, 6vw, 68px);
             font-weight: 300;
             color: #ffffff;
-            line-height: 1.12;
-            margin-bottom: 18px;
+            line-height: 1.1;
+            margin-bottom: 20px;
         }
 
-        .headline em {
+        .hero h1 em {
             font-style: italic;
-            color: #9ba893;
+            color: #b8caa5;
         }
 
-        .description {
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
+        .hero-sub {
+            font-size: clamp(13px, 1.4vw, 15px);
+            color: rgba(255,255,255,0.75);
             line-height: 1.9;
-            max-width: 380px;
             font-weight: 300;
         }
 
-        .right-content {
+        .hero-right {
             text-align: right;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            min-width: 200px;
         }
 
-        .logo-area { text-align: right; }
-
-        .logo-text {
+        .hero-logo {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
+            font-size: 22px;
             letter-spacing: 5px;
             color: #ffffff;
-            font-weight: 400;
+            margin-bottom: 5px;
         }
 
-        .logo-subtitle {
+        .hero-logo-sub {
             font-size: 8px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #9ba893;
-            margin-top: 5px;
+            margin-bottom: 25px;
         }
 
-        .availability-box {
+        .hero-avail {
             background: #9ba893;
-            padding: 20px 28px;
+            padding: 20px 30px;
             text-align: center;
-            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        .avail-label {
+        .hero-avail-label {
             font-size: 8px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: rgba(255,255,255,0.7);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .avail-months {
+        .hero-avail-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            color: #ffffff;
+            font-size: 28px;
+            color: #fff;
             font-weight: 400;
         }
 
-        .avail-months span {
-            margin: 0 6px;
-            opacity: 0.5;
-            font-size: 18px;
-        }
-
-        .avail-year {
+        .hero-avail-detail {
             font-size: 9px;
             letter-spacing: 2px;
             color: rgba(255,255,255,0.5);
             margin-top: 4px;
         }
 
-        .cta-row {
-            margin-top: 18px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-        }
-
-        .enquire-btn {
-            background: transparent;
+        .hero-enquire {
+            display: inline-block;
             border: 1px solid rgba(255,255,255,0.3);
-            color: #ffffff;
-            padding: 14px 30px;
+            color: #fff;
+            padding: 14px 34px;
             font-size: 9px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            cursor: pointer;
+            text-decoration: none;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: all 0.3s;
         }
 
-        .enquire-btn:hover {
+        .hero-enquire:hover {
             background: #9ba893;
             border-color: #9ba893;
         }
 
-        .website {
+        .hero-website {
+            display: block;
+            margin-top: 12px;
             font-size: 10px;
             color: rgba(255,255,255,0.35);
             letter-spacing: 2px;
         }
 
-        .top-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50px;
-            background: #2d3a2e;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 55px;
-            z-index: 3;
+        /* About section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
         }
 
-        .breed-label {
-            font-size: 9px;
+        .about-image {
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .about-text {
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-label {
+            font-size: 10px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.4);
-        }
-
-        .now-booking {
-            font-size: 9px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
             color: #9ba893;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .image-corner {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            z-index: 2;
+        .about-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 3vw, 42px);
+            font-weight: 300;
+            color: #2d3a2e;
+            line-height: 1.2;
+            margin-bottom: 24px;
         }
 
-        .corner-tl {
-            top: 62px;
-            left: 62px;
-            border-top: 1px solid rgba(255,255,255,0.4);
-            border-left: 1px solid rgba(255,255,255,0.4);
+        .about-heading em {
+            font-style: italic;
+            color: #9ba893;
         }
 
-        .corner-tr {
-            top: 62px;
-            right: 62px;
-            border-top: 1px solid rgba(255,255,255,0.4);
-            border-right: 1px solid rgba(255,255,255,0.4);
+        .about-body {
+            font-size: 14px;
+            color: #6a6a6a;
+            line-height: 2;
+            font-weight: 300;
+            max-width: 420px;
         }
 
-        .corner-bl {
-            top: calc(62% + 35px);
-            left: 62px;
-            border-bottom: 1px solid rgba(255,255,255,0.4);
-            border-left: 1px solid rgba(255,255,255,0.4);
+        /* Services bar */
+        .services-bar {
+            background: #2d3a2e;
+            padding: 60px 8%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
 
-        .corner-br {
-            top: calc(62% + 35px);
-            right: 62px;
-            border-bottom: 1px solid rgba(255,255,255,0.4);
-            border-right: 1px solid rgba(255,255,255,0.4);
+        .svc h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .svc p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        /* CTA */
+        .cta-strip {
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e8e3dd;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .cta-strip-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 300;
+            color: #2d3a2e;
+        }
+
+        .cta-strip-text em {
+            font-style: italic;
+            color: #9ba893;
+        }
+
+        .cta-strip-btn {
+            display: inline-block;
+            background: #9ba893;
+            color: #fff;
+            padding: 18px 44px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .cta-strip-btn:hover { background: #2d3a2e; }
+
+        /* Footer */
+        .page-footer {
+            padding: 40px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e8e3dd;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            letter-spacing: 5px;
+            color: #2d3a2e;
+        }
+
+        .footer-link {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #9ba893;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-right {
+                text-align: left;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                min-height: 300px;
+                order: -1;
+            }
+
+            .services-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-strip {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .page-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="post-container">
-        <div class="top-bar">
-            <span class="breed-label">Groodle Specialist</span>
-            <span class="now-booking">Limited Availability</span>
-        </div>
+    <nav class="topbar" id="topbar">
+        <a href="index.html" class="topbar-logo">ASH & HOUND</a>
+        <a href="enquiry.html?service=sitting" class="topbar-cta">Enquire Now</a>
+    </nav>
 
-        <div class="image-area">
-            <img src="Facetune_24-01-2026-13-08-02.jpeg" alt="Ash with two groodles in a cozy home setting">
-        </div>
-        <div class="image-overlay"></div>
-
-        <div class="image-corner corner-tl"></div>
-        <div class="image-corner corner-tr"></div>
-        <div class="image-corner corner-bl"></div>
-        <div class="image-corner corner-br"></div>
-
-        <div class="content-panel">
-            <div class="left-content">
-                <div class="tagline">Boutique Pet Care &bull; Brisbane</div>
-                <h1 class="headline">
-                    Where <em>fluffy</em> friends<br>
-                    feel at home
-                </h1>
-                <p class="description">
+    <section class="hero">
+        <img class="hero-img" src="Facetune_24-01-2026-13-08-02.jpeg" alt="Ash with two groodles in a cozy home setting">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="hero-badge">Groodle Specialist</div>
+                <h1>Where <em>fluffy</em> friends<br>feel at home</h1>
+                <p class="hero-sub">
                     Boutique in-home pet sitting and private boarding
                     for your groodle. Specialising in anxious and
                     high-needs pets who thrive with dedicated,
                     one-on-one attention.
                 </p>
             </div>
-
-            <div class="right-content">
-                <div class="logo-area">
-                    <div class="logo-text">ASH & HOUND</div>
-                    <div class="logo-subtitle">Private Pet Care</div>
+            <div class="hero-right">
+                <div class="hero-logo">ASH & HOUND</div>
+                <div class="hero-logo-sub">Private Pet Care</div>
+                <div class="hero-avail">
+                    <div class="hero-avail-label">Accepting New Clients</div>
+                    <div class="hero-avail-month">February</div>
+                    <div class="hero-avail-detail">Limited Spots</div>
                 </div>
-
-                <div>
-                    <div class="availability-box">
-                        <div class="avail-label">Accepting New Clients</div>
-                        <div class="avail-months">February</div>
-                        <div class="avail-year">Limited Spots</div>
-                    </div>
-
-                    <div class="cta-row">
-                        <button class="enquire-btn">Enquire Now</button>
-                        <span class="website">ashandhound.com</span>
-                    </div>
-                </div>
+                <a href="enquiry.html?service=sitting" class="hero-enquire">Enquire Now</a>
+                <span class="hero-website">ashandhound.com</span>
             </div>
         </div>
+    </section>
+
+    <section class="about">
+        <div class="about-image">
+            <img src="Facetune_22-01-2026-12-12-14.jpeg" alt="Ash with groodles on the sofa">
+        </div>
+        <div class="about-text">
+            <div class="about-label">Why Groodles Love Us</div>
+            <h2 class="about-heading">Gentle, <em>familiar</em> care for your groodle</h2>
+            <p class="about-body">
+                Groodles are social, affectionate and sensitive to change.
+                We provide the same dedicated sitter every time, in a calm
+                environment where your fluffy friend feels safe, comfortable
+                and genuinely at home.
+            </p>
+        </div>
+    </section>
+
+    <section class="services-bar">
+        <div class="svc">
+            <h3>In-Home Sitting</h3>
+            <p>Your groodle stays in their own home with a dedicated sitter. Same routine, same bed, same walks.</p>
+        </div>
+        <div class="svc">
+            <h3>Private Boarding</h3>
+            <p>One-on-one care in our calm, pet-friendly home. No kennels, no crowds — just a quiet stay.</p>
+        </div>
+        <div class="svc">
+            <h3>Anxious Groodles</h3>
+            <p>Nervous groodles get patient, gentle attention from a familiar face they learn to trust.</p>
+        </div>
+    </section>
+
+    <div class="cta-strip">
+        <div class="cta-strip-text">Your groodle deserves <em>exceptional</em> care</div>
+        <a href="enquiry.html?service=sitting" class="cta-strip-btn">Get in Touch</a>
     </div>
+
+    <footer class="page-footer">
+        <div class="footer-logo">ASH & HOUND</div>
+        <a href="index.html" class="footer-link">ashandhound.com</a>
+    </footer>
+
     <script>
-        function scalePost() {
-            var post = document.querySelector('.post-container');
-            var scale = Math.min((window.innerWidth - 40) / 1080, (window.innerHeight - 40) / 1080, 1);
-            post.style.transform = 'scale(' + scale + ')';
-            post.style.transformOrigin = 'center center';
-        }
-        window.addEventListener('resize', scalePost);
-        scalePost();
+        window.addEventListener('scroll', function() {
+            document.getElementById('topbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
     </script>
 </body>
 </html>

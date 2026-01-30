@@ -3,173 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASH & HOUND - Cocker Spaniel Post</title>
+    <title>Cocker Spaniel Care Brisbane | ASH & HOUND</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: #f5f3f0;
+            background: #ffffff;
+            color: #2d3a2e;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-end;
             overflow: hidden;
+            background: #f5f3f0;
         }
 
-        .post-container {
-            width: 1080px;
-            height: 1080px;
-            background: #ffffff;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.12);
-        }
-
-        .bg {
+        .hero-image {
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse at 20% 0%, rgba(184,202,165,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 100%, rgba(184,202,165,0.1) 0%, transparent 50%),
-                linear-gradient(160deg, #faf8f5 0%, #f0ece6 40%, #e6e0d7 100%);
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
         }
 
-        .overlay {
+        .hero-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(
                 180deg,
-                rgba(255,255,255,0.3) 0%,
-                rgba(255,255,255,0.1) 50%,
-                rgba(255,255,255,0.6) 100%
+                rgba(45,58,46,0.1) 0%,
+                rgba(45,58,46,0.2) 40%,
+                rgba(45,58,46,0.7) 75%,
+                rgba(45,58,46,0.9) 100%
             );
-            z-index: 1;
         }
 
-        .frame {
-            position: absolute;
-            top: 28px; left: 28px; right: 28px; bottom: 28px;
-            border: 1px solid rgba(155,168,147,0.25);
-            z-index: 2;
-            pointer-events: none;
-        }
-
-        .content {
+        .hero-content {
             position: relative;
-            z-index: 3;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            padding: 60px;
+            z-index: 2;
+            width: 100%;
+            padding: 60px 8%;
         }
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-            letter-spacing: 6px;
-            color: #2d3a2e;
-            font-weight: 400;
-        }
-
-        .logo span {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8px;
-            letter-spacing: 4px;
-            color: #9ba893;
-            margin-top: 6px;
-            text-transform: uppercase;
-        }
-
-        .badge {
-            background: #2d3a2e;
-            color: white;
-            padding: 14px 28px;
+        .hero-badge {
+            display: inline-block;
+            background: #9ba893;
+            color: #fff;
+            padding: 10px 22px;
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
             font-weight: 500;
+            margin-bottom: 30px;
         }
 
-        .breed-tag {
-            position: absolute;
-            top: 50%;
-            right: 55px;
-            transform: translateY(-50%) rotate(90deg);
-            transform-origin: center;
-            font-size: 10px;
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(42px, 6vw, 72px);
+            font-weight: 300;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: #b8caa5;
+        }
+
+        .hero-sub {
+            font-size: clamp(13px, 1.5vw, 16px);
+            color: rgba(255,255,255,0.8);
+            line-height: 1.8;
+            max-width: 520px;
+            font-weight: 300;
+        }
+
+        /* Nav bar */
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            transition: background 0.3s;
+        }
+
+        .topbar.scrolled {
+            background: rgba(45,58,46,0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 8%;
+        }
+
+        .topbar-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
             letter-spacing: 5px;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .topbar-cta {
+            font-size: 10px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(45,58,46,0.25);
-            white-space: nowrap;
-            z-index: 3;
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 10px 24px;
+            transition: all 0.3s;
         }
 
-        .main-content {
-            margin-top: auto;
-            background: rgba(255,255,255,0.92);
-            padding: 55px;
-            backdrop-filter: blur(20px);
-            border-left: 3px solid #9ba893;
-            position: relative;
-        }
-
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: -40px;
-            left: 55px;
-            width: 50px;
-            height: 1px;
+        .topbar-cta:hover {
             background: #9ba893;
+            border-color: #9ba893;
         }
 
-        .tagline {
+        /* Info section */
+        .info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 50vh;
+        }
+
+        .info-text {
+            padding: 80px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .info-label {
             font-size: 10px;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             color: #9ba893;
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
-        .headline {
+        .info-heading {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 54px;
+            font-size: clamp(30px, 3.5vw, 44px);
             font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 24px;
             color: #2d3a2e;
-            line-height: 1.12;
-            margin-bottom: 22px;
         }
 
-        .headline em {
+        .info-heading em {
             font-style: italic;
             color: #9ba893;
         }
 
-        .description {
+        .info-body {
             font-size: 14px;
             color: #6a6a6a;
-            line-height: 1.9;
-            max-width: 480px;
-            margin-bottom: 35px;
+            line-height: 2;
             font-weight: 300;
+            max-width: 440px;
         }
 
+        .info-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Availability strip */
         .availability {
+            background: #2d3a2e;
+            padding: 50px 8%;
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 35px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .avail-text {
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
 
         .avail-label {
@@ -178,147 +209,211 @@
             text-transform: uppercase;
             color: #9ba893;
             font-weight: 500;
-            writing-mode: vertical-lr;
-            transform: rotate(180deg);
+            line-height: 1.8;
         }
 
-        .avail-dates {
-            display: flex;
-            gap: 12px;
-        }
-
-        .date-block {
-            background: #2d3a2e;
-            color: #ffffff;
-            padding: 14px 22px;
-            text-align: center;
-            min-width: 100px;
-        }
-
-        .date-block .month {
+        .avail-month {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-weight: 400;
-            letter-spacing: 1px;
+            font-size: 36px;
+            color: #ffffff;
+            font-weight: 300;
         }
 
-        .date-block .year {
+        .avail-month span {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
             font-size: 9px;
             letter-spacing: 2px;
-            opacity: 0.6;
+            color: rgba(255,255,255,0.5);
             margin-top: 4px;
         }
 
-        .cta-row {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-
-        .cta-button {
+        .avail-cta {
+            display: inline-block;
             background: #9ba893;
-            color: white;
-            padding: 18px 42px;
+            color: #fff;
+            padding: 18px 44px;
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
             font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: background 0.3s;
         }
 
-        .cta-button:hover { background: #2d3a2e; }
+        .avail-cta:hover { background: #7a8a6d; }
 
-        .website {
-            font-size: 12px;
+        /* Services */
+        .services {
+            padding: 80px 8%;
+            background: #faf8f5;
+        }
+
+        .services-label {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
             color: #9ba893;
-            letter-spacing: 2px;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            padding: 35px;
+            border: 1px solid #e8e3dd;
+            background: #ffffff;
+        }
+
+        .service-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
             font-weight: 400;
+            margin-bottom: 14px;
+            color: #2d3a2e;
         }
 
-        .corner-accent {
-            position: absolute;
-            bottom: 28px;
-            right: 28px;
-            width: 140px;
-            height: 140px;
-            border-top: 1px solid rgba(155,168,147,0.3);
-            border-left: 1px solid rgba(155,168,147,0.3);
-            z-index: 2;
+        .service-card p {
+            font-size: 13px;
+            color: #6a6a6a;
+            line-height: 1.9;
+            font-weight: 300;
         }
 
-        .dot-accent {
-            position: absolute;
-            top: 80px;
-            left: 50%;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #9ba893;
-            z-index: 3;
+        /* Footer */
+        .page-footer {
+            padding: 50px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e8e3dd;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            letter-spacing: 5px;
+            color: #2d3a2e;
+        }
+
+        .footer-link {
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #9ba893;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .info-image {
+                min-height: 300px;
+                order: -1;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .availability {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .avail-text {
+                flex-direction: column;
+            }
+
+            .page-footer {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="post-container">
-        <div class="bg"></div>
-        <div class="overlay"></div>
-        <div class="frame"></div>
-        <div class="dot-accent"></div>
+    <nav class="topbar" id="topbar">
+        <a href="index.html" class="topbar-logo">ASH & HOUND</a>
+        <a href="enquiry.html?service=sitting" class="topbar-cta">Enquire Now</a>
+    </nav>
 
-        <div class="content">
-            <div class="header">
-                <div class="logo">
-                    ASH & HOUND
-                    <span>Private Pet Care</span>
-                </div>
-                <div class="badge">Limited Availability</div>
-            </div>
+    <section class="hero">
+        <div class="hero-image" style="background: linear-gradient(135deg, #d8d2c8 0%, #c9c0b3 50%, #bab0a0 100%);"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">Cocker Spaniel Specialist</div>
+            <h1>Your spaniel deserves<br><em>exceptional</em> care</h1>
+            <p class="hero-sub">
+                Limited spots for boutique in-home pet sitting and private boarding.
+                Specialising in anxious spaniels who thrive with one-on-one attention
+                in a calm, loving environment.
+            </p>
+        </div>
+    </section>
 
-            <div class="breed-tag">Cocker Spaniel Specialist</div>
+    <section class="info">
+        <div class="info-text">
+            <div class="info-label">Why Spaniels Love Us</div>
+            <h2 class="info-heading">Calm, <em>consistent</em> care tailored to your spaniel</h2>
+            <p class="info-body">
+                Cocker spaniels are sensitive, loyal and thrive on routine. We provide
+                the same familiar sitter every time, in-home or at our private boarding
+                residence, so your spaniel feels safe while you're away.
+            </p>
+        </div>
+        <div class="info-image">
+            <img src="IMG_2531.jpeg" alt="Cocker spaniel and dachshund relaxing on couch">
+        </div>
+    </section>
 
-            <div class="main-content">
-                <div class="tagline">Boutique Care &bull; Brisbane</div>
-                <h1 class="headline">
-                    Your spaniel deserves<br>
-                    <em>exceptional</em> care
-                </h1>
-                <p class="description">
-                    Limited spots for boutique in-home pet sitting and private boarding.
-                    Specialising in anxious spaniels who thrive with
-                    one-on-one attention in a calm, loving environment.
-                </p>
-
-                <div class="availability">
-                    <div class="avail-label">Now Accepting<br>New Clients</div>
-                    <div class="avail-dates">
-                        <div class="date-block">
-                            <div class="month">February</div>
-                            <div class="year">2026</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="cta-row">
-                    <button class="cta-button">Enquire Now</button>
-                    <span class="website">ashandhound.com</span>
-                </div>
+    <div class="availability">
+        <div class="avail-text">
+            <div class="avail-label">Now Accepting<br>New Clients</div>
+            <div class="avail-month">
+                February
+                <span>2026 &bull; Limited Spots</span>
             </div>
         </div>
-
-        <div class="corner-accent"></div>
+        <a href="enquiry.html?service=sitting" class="avail-cta">Enquire Now</a>
     </div>
+
+    <section class="services">
+        <div class="services-label">What We Offer</div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>In-Home Sitting</h3>
+                <p>Your spaniel stays in their own home with a dedicated sitter. Same routine, same bed, same walks.</p>
+            </div>
+            <div class="service-card">
+                <h3>Private Boarding</h3>
+                <p>One-on-one care in our calm, pet-friendly home. No kennels, no crowds — just a quiet stay.</p>
+            </div>
+            <div class="service-card">
+                <h3>Anxious Pets</h3>
+                <p>Specialising in nervous and high-needs spaniels who need patience and a consistent, gentle approach.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="page-footer">
+        <div class="footer-logo">ASH & HOUND</div>
+        <a href="index.html" class="footer-link">ashandhound.com</a>
+    </footer>
+
     <script>
-        function scalePost() {
-            var post = document.querySelector('.post-container');
-            var scale = Math.min((window.innerWidth - 40) / 1080, (window.innerHeight - 40) / 1080, 1);
-            post.style.transform = 'scale(' + scale + ')';
-            post.style.transformOrigin = 'center center';
-        }
-        window.addEventListener('resize', scalePost);
-        scalePost();
+        window.addEventListener('scroll', function() {
+            document.getElementById('topbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
     </script>
 </body>
 </html>
