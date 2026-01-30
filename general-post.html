@@ -6,11 +6,7 @@
     <title>ASH & HOUND - General Availability Post</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -31,50 +27,36 @@
             box-shadow: 0 25px 80px rgba(0,0,0,0.12);
         }
 
-        .frame {
-            position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
-            bottom: 30px;
-            border: 1px solid #9ba893;
-            pointer-events: none;
-            z-index: 10;
-        }
-
         .bg-image {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                180deg,
-                #f8f6f3 0%,
-                #ebe7e0 40%,
-                #ddd7cc 100%
-            );
+            background:
+                radial-gradient(ellipse at 30% 20%, rgba(184,202,165,0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(184,202,165,0.08) 0%, transparent 50%),
+                linear-gradient(180deg, #faf8f5 0%, #f0ece6 40%, #e8e2d8 100%);
         }
 
         .content-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: linear-gradient(
                 180deg,
-                rgba(255,255,255,0.95) 0%,
-                rgba(255,255,255,0.7) 30%,
-                rgba(255,255,255,0.4) 60%,
-                rgba(255,255,255,0.85) 100%
+                rgba(255,255,255,0.9) 0%,
+                rgba(255,255,255,0.5) 35%,
+                rgba(255,255,255,0.3) 60%,
+                rgba(255,255,255,0.8) 100%
             );
             z-index: 1;
+        }
+
+        .frame {
+            position: absolute;
+            top: 30px; left: 30px; right: 30px; bottom: 30px;
+            border: 1px solid rgba(155,168,147,0.3);
+            pointer-events: none;
+            z-index: 10;
         }
 
         .content {
@@ -99,24 +81,24 @@
 
         .logo-main {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 32px;
+            font-size: 30px;
             letter-spacing: 8px;
             color: #2d3a2e;
             font-weight: 400;
         }
 
         .logo-tagline {
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9ba893;
             margin-top: 8px;
         }
 
-        .now-booking-badge {
-            background: #9ba893;
+        .badge {
+            background: #2d3a2e;
             color: white;
-            padding: 15px 30px;
+            padding: 14px 28px;
             font-size: 10px;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -130,11 +112,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px 0;
+            padding: 20px 0;
         }
 
         .decorative-line {
-            width: 60px;
+            width: 50px;
             height: 1px;
             background: #9ba893;
             margin-bottom: 40px;
@@ -142,11 +124,11 @@
 
         .headline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 64px;
+            font-size: 66px;
             font-weight: 300;
             color: #2d3a2e;
-            line-height: 1.1;
-            margin-bottom: 30px;
+            line-height: 1.08;
+            margin-bottom: 28px;
         }
 
         .headline em {
@@ -158,72 +140,83 @@
             font-size: 13px;
             color: #6a6a6a;
             line-height: 2;
-            max-width: 500px;
+            max-width: 460px;
             font-weight: 300;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .availability-section {
             display: flex;
             align-items: center;
-            gap: 40px;
-            margin-bottom: 45px;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .avail-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #9ba893;
+            font-weight: 500;
+        }
+
+        .avail-divider {
+            width: 30px;
+            height: 1px;
+            background: #d4d4d4;
         }
 
         .month-block {
             text-align: center;
+            background: #2d3a2e;
+            padding: 18px 30px;
+            min-width: 130px;
         }
 
         .month-name {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 48px;
-            color: #2d3a2e;
+            font-size: 32px;
+            color: #ffffff;
             font-weight: 300;
             line-height: 1;
         }
 
         .month-year {
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 3px;
-            color: #9ba893;
-            margin-top: 8px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 6px;
             text-transform: uppercase;
         }
 
-        .divider {
-            width: 40px;
-            height: 1px;
-            background: #d4d4d4;
+        .month-sep {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            color: #d4d4d4;
+            font-weight: 300;
         }
 
         .services {
             display: flex;
-            gap: 30px;
-            margin-bottom: 45px;
+            gap: 8px;
+            margin-bottom: 40px;
         }
 
         .service {
-            font-size: 11px;
+            font-size: 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #5a5a5a;
-            position: relative;
-            padding: 0 15px;
-        }
-
-        .service:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            right: -18px;
-            color: #9ba893;
+            color: #6a6a6a;
+            padding: 10px 18px;
+            border: 1px solid #ddd;
         }
 
         .cta-button {
-            background: #2d3a2e;
+            background: #9ba893;
             color: white;
             border: none;
-            padding: 20px 50px;
-            font-size: 11px;
+            padding: 20px 55px;
+            font-size: 10px;
             letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
@@ -232,9 +225,7 @@
             transition: all 0.3s ease;
         }
 
-        .cta-button:hover {
-            background: #9ba893;
-        }
+        .cta-button:hover { background: #2d3a2e; }
 
         .footer {
             display: flex;
@@ -243,71 +234,37 @@
         }
 
         .location {
-            font-size: 11px;
-            letter-spacing: 2px;
+            font-size: 10px;
+            letter-spacing: 3px;
             color: #9ba893;
+            text-transform: uppercase;
         }
 
         .website {
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 3px;
             color: #2d3a2e;
             font-weight: 400;
         }
 
-        .corner-decor {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            z-index: 6;
-        }
-
-        .corner-tl {
-            top: 50px;
-            left: 50px;
-            border-top: 1px solid rgba(155, 168, 147, 0.4);
-            border-left: 1px solid rgba(155, 168, 147, 0.4);
-        }
-
-        .corner-tr {
-            top: 50px;
-            right: 50px;
-            border-top: 1px solid rgba(155, 168, 147, 0.4);
-            border-right: 1px solid rgba(155, 168, 147, 0.4);
-        }
-
-        .corner-bl {
-            bottom: 50px;
-            left: 50px;
-            border-bottom: 1px solid rgba(155, 168, 147, 0.4);
-            border-left: 1px solid rgba(155, 168, 147, 0.4);
-        }
-
-        .corner-br {
-            bottom: 50px;
-            right: 50px;
-            border-bottom: 1px solid rgba(155, 168, 147, 0.4);
-            border-right: 1px solid rgba(155, 168, 147, 0.4);
-        }
-
         .side-text {
             position: absolute;
-            font-size: 10px;
-            letter-spacing: 4px;
+            font-size: 9px;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: rgba(155, 168, 147, 0.5);
+            color: rgba(155,168,147,0.35);
             z-index: 6;
         }
 
         .side-text.left {
-            left: 55px;
+            left: 50px;
             top: 50%;
             transform: translateY(-50%) rotate(-90deg);
             transform-origin: left center;
         }
 
         .side-text.right {
-            right: 55px;
+            right: 50px;
             top: 50%;
             transform: translateY(-50%) rotate(90deg);
             transform-origin: right center;
@@ -316,18 +273,9 @@
 </head>
 <body>
     <div class="post-container">
-        <div class="frame"></div>
-
-        <div class="bg-image">
-            <div class="image-placeholder"></div>
-        </div>
-
+        <div class="bg-image"></div>
         <div class="content-overlay"></div>
-
-        <div class="corner-decor corner-tl"></div>
-        <div class="corner-decor corner-tr"></div>
-        <div class="corner-decor corner-bl"></div>
-        <div class="corner-decor corner-br"></div>
+        <div class="frame"></div>
 
         <span class="side-text left">Private Pet Care</span>
         <span class="side-text right">Brisbane</span>
@@ -336,9 +284,9 @@
             <div class="header">
                 <div class="logo-section">
                     <div class="logo-main">ASH & HOUND</div>
-                    <div class="logo-tagline">- Private Pet Care -</div>
+                    <div class="logo-tagline">Boutique Pet Care &bull; Brisbane</div>
                 </div>
-                <div class="now-booking-badge">Now Booking</div>
+                <div class="badge">Limited Availability</div>
             </div>
 
             <div class="main-content">
@@ -350,27 +298,24 @@
                 </h1>
 
                 <p class="subheadline">
-                    Limited availability for boutique in-home pet sitting
+                    Limited spots for boutique in-home pet sitting
                     and private boarding. Specialising in anxious and
                     high-needs pets who thrive with one-on-one attention.
                 </p>
 
                 <div class="availability-section">
+                    <div class="avail-label">Accepting<br>New Clients</div>
+                    <div class="avail-divider"></div>
                     <div class="month-block">
                         <div class="month-name">February</div>
-                        <div class="month-year">2026</div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="month-block">
-                        <div class="month-name">April</div>
-                        <div class="month-year">2026</div>
+                        <div class="month-year">2026 &bull; Limited Spots</div>
                     </div>
                 </div>
 
                 <div class="services">
                     <span class="service">In-Home Sitting</span>
                     <span class="service">Private Boarding</span>
-                    <span class="service">Anxious Pets Welcome</span>
+                    <span class="service">Anxious Pets</span>
                 </div>
 
                 <button class="cta-button">Enquire Now</button>

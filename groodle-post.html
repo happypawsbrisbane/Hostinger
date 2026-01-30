@@ -6,11 +6,7 @@
     <title>ASH & HOUND - Groodle Post</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -33,32 +29,33 @@
 
         .image-area {
             position: absolute;
-            top: 60px;
-            left: 60px;
-            right: 60px;
-            height: 65%;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 62%;
             overflow: hidden;
         }
 
-        .image-placeholder {
+        .image-area img {
             width: 100%;
             height: 100%;
-            background: linear-gradient(
-                135deg,
-                #c4b8a8 0%,
-                #d4cfc7 50%,
-                #e8e4de 100%
-            );
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            object-fit: cover;
+            object-position: center 15%;
         }
 
-        .image-placeholder span {
-            color: rgba(45, 58, 46, 0.5);
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .image-overlay {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            right: 50px;
+            height: 62%;
+            background: linear-gradient(
+                180deg,
+                transparent 60%,
+                rgba(45,58,46,0.3) 85%,
+                rgba(45,58,46,0.8) 100%
+            );
+            z-index: 1;
         }
 
         .content-panel {
@@ -66,20 +63,38 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 35%;
+            height: 38%;
             background: #2d3a2e;
-            padding: 50px 60px;
+            padding: 45px 55px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
+            z-index: 2;
+        }
+
+        .content-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 55px;
+            right: 55px;
+            height: 1px;
+            background: linear-gradient(
+                90deg,
+                transparent 0%,
+                rgba(155,168,147,0.4) 20%,
+                rgba(155,168,147,0.4) 80%,
+                transparent 100%
+            );
         }
 
         .left-content {
             flex: 1;
+            padding-right: 30px;
         }
 
         .tagline {
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #9ba893;
@@ -89,11 +104,11 @@
 
         .headline {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 42px;
+            font-size: 44px;
             font-weight: 300;
             color: #ffffff;
-            line-height: 1.15;
-            margin-bottom: 20px;
+            line-height: 1.12;
+            margin-bottom: 18px;
         }
 
         .headline em {
@@ -102,10 +117,10 @@
         }
 
         .description {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
             line-height: 1.9;
-            max-width: 400px;
+            max-width: 380px;
             font-weight: 300;
         }
 
@@ -115,23 +130,21 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            padding-left: 40px;
+            min-width: 200px;
         }
 
-        .logo-area {
-            text-align: right;
-        }
+        .logo-area { text-align: right; }
 
         .logo-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
+            font-size: 20px;
             letter-spacing: 5px;
             color: #ffffff;
             font-weight: 400;
         }
 
         .logo-subtitle {
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #9ba893;
@@ -140,33 +153,41 @@
 
         .availability-box {
             background: #9ba893;
-            padding: 25px 35px;
+            padding: 20px 28px;
             text-align: center;
-            margin-top: 25px;
+            margin-top: 20px;
         }
 
         .avail-label {
-            font-size: 9px;
+            font-size: 8px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.8);
-            margin-bottom: 12px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 10px;
         }
 
         .avail-months {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
+            font-size: 26px;
             color: #ffffff;
             font-weight: 400;
         }
 
         .avail-months span {
-            margin: 0 8px;
+            margin: 0 6px;
             opacity: 0.5;
+            font-size: 18px;
+        }
+
+        .avail-year {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
         }
 
         .cta-row {
-            margin-top: 25px;
+            margin-top: 18px;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -175,14 +196,15 @@
 
         .enquire-btn {
             background: transparent;
-            border: 1px solid rgba(255,255,255,0.4);
+            border: 1px solid rgba(255,255,255,0.3);
             color: #ffffff;
             padding: 14px 30px;
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 3px;
             text-transform: uppercase;
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
@@ -192,8 +214,8 @@
         }
 
         .website {
-            font-size: 11px;
-            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+            color: rgba(255,255,255,0.35);
             letter-spacing: 2px;
         }
 
@@ -202,61 +224,63 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 60px;
+            height: 50px;
             background: #2d3a2e;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 60px;
+            padding: 0 55px;
+            z-index: 3;
         }
 
         .breed-label {
-            font-size: 10px;
-            letter-spacing: 3px;
+            font-size: 9px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
         }
 
         .now-booking {
-            font-size: 10px;
+            font-size: 9px;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #9ba893;
+            font-weight: 500;
         }
 
         .image-corner {
             position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(255,255,255,0.6);
+            width: 30px;
+            height: 30px;
+            z-index: 2;
         }
 
         .corner-tl {
-            top: 75px;
-            left: 75px;
-            border-right: none;
-            border-bottom: none;
+            top: 62px;
+            left: 62px;
+            border-top: 1px solid rgba(255,255,255,0.4);
+            border-left: 1px solid rgba(255,255,255,0.4);
         }
 
         .corner-tr {
-            top: 75px;
-            right: 75px;
-            border-left: none;
-            border-bottom: none;
+            top: 62px;
+            right: 62px;
+            border-top: 1px solid rgba(255,255,255,0.4);
+            border-right: 1px solid rgba(255,255,255,0.4);
         }
 
         .corner-bl {
-            top: calc(65% + 45px);
-            left: 75px;
-            border-right: none;
-            border-top: none;
+            top: calc(62% + 35px);
+            left: 62px;
+            border-bottom: 1px solid rgba(255,255,255,0.4);
+            border-left: 1px solid rgba(255,255,255,0.4);
         }
 
         .corner-br {
-            top: calc(65% + 45px);
-            right: 75px;
-            border-left: none;
-            border-top: none;
+            top: calc(62% + 35px);
+            right: 62px;
+            border-bottom: 1px solid rgba(255,255,255,0.4);
+            border-right: 1px solid rgba(255,255,255,0.4);
         }
     </style>
 </head>
@@ -264,14 +288,13 @@
     <div class="post-container">
         <div class="top-bar">
             <span class="breed-label">Groodle Specialist</span>
-            <span class="now-booking">Now Booking</span>
+            <span class="now-booking">Limited Availability</span>
         </div>
 
         <div class="image-area">
-            <div class="image-placeholder">
-                <span>Groodle Image Here</span>
-            </div>
+            <img src="Facetune_24-01-2026-13-08-02.jpeg" alt="Ash with two groodles in a cozy home setting">
         </div>
+        <div class="image-overlay"></div>
 
         <div class="image-corner corner-tl"></div>
         <div class="image-corner corner-tr"></div>
@@ -280,7 +303,7 @@
 
         <div class="content-panel">
             <div class="left-content">
-                <div class="tagline">Private Pet Care - Brisbane</div>
+                <div class="tagline">Boutique Pet Care &bull; Brisbane</div>
                 <h1 class="headline">
                     Where <em>fluffy</em> friends<br>
                     feel at home
@@ -301,8 +324,9 @@
 
                 <div>
                     <div class="availability-box">
-                        <div class="avail-label">Availability</div>
-                        <div class="avail-months">Feb <span>&</span> Apr</div>
+                        <div class="avail-label">Accepting New Clients</div>
+                        <div class="avail-months">February</div>
+                        <div class="avail-year">Limited Spots</div>
                     </div>
 
                     <div class="cta-row">
