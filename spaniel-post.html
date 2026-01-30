@@ -15,7 +15,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px;
+            overflow: hidden;
         }
 
         .post-container {
@@ -309,5 +310,15 @@
 
         <div class="corner-accent"></div>
     </div>
+    <script>
+        function scalePost() {
+            var post = document.querySelector('.post-container');
+            var scale = Math.min((window.innerWidth - 40) / 1080, (window.innerHeight - 40) / 1080, 1);
+            post.style.transform = 'scale(' + scale + ')';
+            post.style.transformOrigin = 'center center';
+        }
+        window.addEventListener('resize', scalePost);
+        scalePost();
+    </script>
 </body>
 </html>
