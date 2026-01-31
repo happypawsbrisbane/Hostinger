@@ -61,31 +61,77 @@
     .founder-images {
         position: relative;
     }
-    .founder-main-img {
+
+    /* Image Carousel */
+    .carousel {
+        position: relative;
         width: 100%;
+        max-height: 480px;
+        overflow: hidden;
         border-radius: 2px;
         box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-        transition: transform 0.3s;
     }
-    .founder-main-img:hover { transform: scale(1.02); }
-    
-    /* Photo collage style */
-    .photo-collage {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
+    .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease;
     }
-    .photo-collage img {
+    .carousel-slide {
+        min-width: 100%;
+        position: relative;
+    }
+    .carousel-slide img {
         width: 100%;
-        height: 180px;
+        height: 480px;
         object-fit: cover;
-        border-radius: 2px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        transition: transform 0.3s;
+        display: block;
     }
-    .photo-collage img:hover {
-        transform: scale(1.03);
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,0.85);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 1.1rem;
+        color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        z-index: 2;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .carousel-btn:hover {
+        background: var(--white);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .carousel-btn.prev { left: 12px; }
+    .carousel-btn.next { right: 12px; }
+    .carousel-dots {
+        position: absolute;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 2;
+    }
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.5);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 0;
+    }
+    .carousel-dot.active {
+        background: var(--white);
+        transform: scale(1.2);
     }
     
     .founder-text h2 { margin-bottom: 2rem; font-size: 1.8rem; }
@@ -219,8 +265,9 @@
             text-align: center;
         }
         .credentials-grid { grid-template-columns: repeat(2, 1fr); }
-        .photo-collage img {
-            height: 140px;
+        .carousel, .carousel-slide img {
+            max-height: 360px;
+            height: 360px;
         }
     }
     @media(max-width: 768px) {
@@ -264,10 +311,21 @@
 <section class="founder-section">
     <div class="founder-grid">
         <div class="founder-images">
-            <img src="IMG_2777.jpeg" alt="Ash with two Cavoodles" class="founder-main-img">
-            <div class="photo-collage">
-                <img src="IMG_2736.jpeg" alt="Playful selfie with chihuahua">
-                <img src="IMG_2733.jpeg" alt="Ash crouching with dachshund outdoors">
+            <div class="carousel" id="founderCarousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-slide">
+                        <img src="IMG_2777.jpeg" alt="Ash with two Cavoodles">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="IMG_2736.jpeg" alt="Playful selfie with chihuahua">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="IMG_2733.jpeg" alt="Ash crouching with dachshund outdoors">
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Previous image">&#8249;</button>
+                <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Next image">&#8250;</button>
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
         <div class="founder-text">
@@ -386,6 +444,38 @@
             document.getElementById('menuToggle').classList.remove('active');
         });
     });
+
+    // Carousel
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const slides = track.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+
+    slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+        currentSlide = index;
+        track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+        document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+            d.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function moveCarousel(dir) {
+        let next = currentSlide + dir;
+        if (next < 0) next = slides.length - 1;
+        if (next >= slides.length) next = 0;
+        goToSlide(next);
+    }
+
+    // Auto-advance every 5 seconds
+    setInterval(() => moveCarousel(1), 5000);
 </script>
 
 </body>
