@@ -609,7 +609,8 @@
             </div>
 
             <div class="actions">
-                <button type="button" class="btn" onclick="copyForm()">Copy to Clipboard</button>
+                <button type="button" class="btn" onclick="submitForm()">Submit Form</button>
+                <button type="button" class="btn btn-secondary" onclick="copyForm()">Copy to Clipboard</button>
                 <button type="button" class="btn btn-secondary" onclick="emailForm()">Open in Email</button>
             </div>
         </form>
@@ -929,6 +930,46 @@ ashandhound.com
             el.style.display = 'block';
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             setTimeout(() => { el.style.display = 'none'; }, 5000);
+        }
+
+        function submitForm() {
+            if (!validateForm()) return;
+
+            const data = getFormData();
+            const text = formatFormText(data);
+            const submitBtn = document.querySelector('.actions .btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            fetch('https://formspree.io/f/myzbraal', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    _subject: 'New Client Onboarding - ' + data.client.name,
+                    name: data.client.name,
+                    email: data.client.email,
+                    phone: data.client.phone,
+                    message: text
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    showSuccess('Form submitted successfully! We\'ll be in touch soon.');
+                    document.getElementById('onboardingForm').reset();
+                } else {
+                    showSuccess('There was a problem submitting the form. Please try the Copy to Clipboard option instead.');
+                }
+            })
+            .catch(() => {
+                showSuccess('There was a problem submitting the form. Please try the Copy to Clipboard option instead.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Form';
+            });
         }
 
         function emailForm() {
