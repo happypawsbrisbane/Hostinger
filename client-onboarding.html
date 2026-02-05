@@ -93,6 +93,12 @@
             color: var(--secondary);
             margin-bottom: 0.5rem;
         }
+        .help-text {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            font-style: italic;
+            margin-top: 0.25rem;
+        }
         input[type="text"],
         input[type="email"],
         input[type="tel"],
@@ -245,6 +251,14 @@
             border-radius: 2px;
             margin-bottom: 1.5rem;
             text-align: center;
+        }
+        .conditional-section {
+            display: none;
+        }
+        .sub-section {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+            margin-top: 1rem;
         }
     </style>
 </head>
@@ -424,43 +438,183 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Health Conditions & Medications</label>
-                            <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                            <label>Microchip Number</label>
+                            <input type="text" class="petMicrochip" placeholder="Optional — helpful for identification">
                         </div>
 
                         <div class="form-group">
-                            <label>Allergies</label>
-                            <textarea class="petAllergies" placeholder="Food, environmental, or medication allergies"></textarea>
+                            <label>Distinguishing Features</label>
+                            <input type="text" class="petFeatures" placeholder="e.g., white patch on chest, scarred left ear">
+                            <p class="help-text">Helps with identification if your pet gets lost</p>
                         </div>
 
-                        <div class="form-group">
-                            <label>Feeding - Breakfast (AM)</label>
-                            <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                        <!-- Health & Allergies -->
+                        <div class="sub-section">
+                            <h3>Health & Allergies</h3>
+
+                            <div class="form-group">
+                                <label>Health Conditions & Medications</label>
+                                <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Food Allergies</label>
+                                <textarea class="petFoodAllergies" placeholder="e.g., chicken, wheat, dairy"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Environmental Allergies</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Pollen" class="petEnvAllergy">
+                                        <label>Pollen</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Mould" class="petEnvAllergy">
+                                        <label>Mould</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Dust" class="petEnvAllergy">
+                                        <label>Dust</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Grass" class="petEnvAllergy">
+                                        <label>Grass</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Environmental Allergies — Other</label>
+                                <input type="text" class="petEnvAllergyOther" placeholder="Any other environmental allergies">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Medication Allergies</label>
+                                <textarea class="petMedAllergies" placeholder="Any known reactions to medications"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Sensitivities to Handling</label>
+                                <textarea class="petHandlingSensitivities" placeholder="e.g., sensitive ears, doesn't like paw touching, hates being picked up"></textarea>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Feeding - Dinner (PM)</label>
-                            <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                        <!-- Feeding -->
+                        <div class="sub-section">
+                            <h3>Feeding</h3>
+
+                            <div class="form-group">
+                                <label>Feeding - Breakfast (AM)</label>
+                                <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Feeding - Dinner (PM)</label>
+                                <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Treats?</label>
+                                <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>Treats?</label>
-                            <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
-                        </div>
+                        <!-- Daily Routine & Exercise -->
+                        <div class="sub-section">
+                            <h3>Daily Routine & Exercise</h3>
 
-                        <div class="form-group">
-                            <label>Exercise & Activity Needs</label>
-                            <textarea class="petExercise" placeholder="e.g., Two 30-min walks per day, loves fetch at the park"></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label>Daily Exercise Level</label>
+                                <select class="petExerciseLevel">
+                                    <option value="" disabled selected>— Select —</option>
+                                    <option value="Low (minimal walks)">Low (minimal walks)</option>
+                                    <option value="Moderate (1-2 walks)">Moderate (1-2 walks)</option>
+                                    <option value="High (3+ walks or active play)">High (3+ walks or active play)</option>
+                                </select>
+                            </div>
 
-                        <div class="form-group">
-                            <label>Daily Routine</label>
-                            <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
+                            <div class="form-group">
+                                <label>Ideal Walk Duration</label>
+                                <input type="text" class="petWalkDuration" placeholder="e.g., 15-20 minutes">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Preferred Walking Times</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Early morning" class="petWalkTime">
+                                        <label>Early morning</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Mid-morning" class="petWalkTime">
+                                        <label>Mid-morning</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Afternoon" class="petWalkTime">
+                                        <label>Afternoon</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" value="Evening" class="petWalkTime">
+                                        <label>Evening</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Playtime Preferences</label>
+                                <textarea class="petPlaytime" placeholder="e.g., loves fetch, prefers indoor play, tug-of-war"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Nap / Rest Schedule</label>
+                                <textarea class="petNapSchedule" placeholder="e.g., naps 2-4pm, very grumpy if woken"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Daily Routine Overview</label>
+                                <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <button type="button" class="add-pet-btn" onclick="addPet()">+ Add Another Pet</button>
+            </div>
+
+            <!-- MULTI-PET DYNAMICS (conditional) -->
+            <div class="section conditional-section" id="multiPetSection">
+                <h2>Multi-Pet Dynamics</h2>
+                <p class="help-text" style="margin-bottom: 1rem;">Since you have multiple pets, these details help us manage them together.</p>
+
+                <div class="form-group">
+                    <label>How do your pets interact with each other?</label>
+                    <textarea id="petInteraction" placeholder="e.g., They play well together but can get jealous over treats"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Do they need to be separated at any time?</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="separateYes" name="petSeparation" value="Yes" onchange="document.getElementById('separationDetails').style.display='block'">
+                            <label for="separateYes">Yes</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="separateNo" name="petSeparation" value="No" onchange="document.getElementById('separationDetails').style.display='none'">
+                            <label for="separateNo">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="separationDetails" style="display: none;">
+                    <label>When / why should they be separated?</label>
+                    <textarea id="separationNotes" placeholder="e.g., Separate during feeding, or when one gets overstimulated"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Any territorial or feeding-time behaviours?</label>
+                    <textarea id="territorialBehaviour" placeholder="e.g., Resource guards food bowl, doesn't share toys"></textarea>
+                </div>
             </div>
 
             <!-- BEHAVIOUR & COMMUNICATION -->
@@ -488,13 +642,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>If you have multiple pets, how do they interact?</label>
-                    <textarea id="petInteraction" placeholder="e.g., They play well together but feed separately. Keep apart when visitors arrive."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>Items or areas to keep away from your pet?</label>
-                    <textarea id="restrictions" placeholder="e.g., Keep shoes in the closet (chews them), no access to the spare room, keep chocolate/grapes out of reach"></textarea>
+                    <label>Trigger situations to avoid</label>
+                    <textarea id="triggerAvoid" placeholder="e.g., doesn't like nail trimmers, anxious during storms, scared of loud trucks"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -554,6 +703,47 @@
                 <div class="form-group">
                     <label>Security cameras or pet cams inside?</label>
                     <input type="text" id="cameras" placeholder="If yes, where are they located?">
+                </div>
+
+                <div class="sub-section">
+                    <h3>Restricted Items & Hazards</h3>
+
+                    <div class="form-group">
+                        <label>Items or foods to keep away from your pet</label>
+                        <textarea id="restrictions" placeholder="e.g., chocolate, grapes, certain toys, shoes"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Household hazards to be aware of</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hazardPlants" value="Toxic plants">
+                                <label for="hazardPlants">Toxic plants</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hazardPool" value="Open pool/pond">
+                                <label for="hazardPool">Open pool/pond</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hazardDoors" value="Unsecured doors/gates">
+                                <label for="hazardDoors">Unsecured doors/gates</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hazardElectrical" value="Electrical hazards">
+                                <label for="hazardElectrical">Electrical hazards</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Household Hazards — Other</label>
+                        <input type="text" id="hazardOther" placeholder="Any other hazards to be aware of">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Pet-proof areas or precautions needed?</label>
+                        <textarea id="petProofAreas" placeholder="e.g., keep kitchen door closed during meal prep, lock the garden gate"></textarea>
+                    </div>
                 </div>
             </div>
 
@@ -654,6 +844,13 @@
     <script>
         let petCount = 1;
 
+        function updateMultiPetVisibility() {
+            const section = document.getElementById('multiPetSection');
+            const petSections = document.querySelectorAll('.pet-section');
+            const filledPets = Array.from(petSections).filter(s => s.querySelector('.petName')?.value.trim()).length;
+            section.style.display = petSections.length >= 2 ? 'block' : 'none';
+        }
+
         function addPet() {
             petCount++;
             const petSection = document.createElement('div');
@@ -749,35 +946,129 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Health Conditions & Medications</label>
-                    <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                    <label>Microchip Number</label>
+                    <input type="text" class="petMicrochip" placeholder="Optional — helpful for identification">
                 </div>
                 <div class="form-group">
-                    <label>Allergies</label>
-                    <textarea class="petAllergies" placeholder="Food, environmental, or medication allergies"></textarea>
+                    <label>Distinguishing Features</label>
+                    <input type="text" class="petFeatures" placeholder="e.g., white patch on chest, scarred left ear">
+                    <p class="help-text">Helps with identification if your pet gets lost</p>
                 </div>
-                <div class="form-group">
-                    <label>Feeding - Breakfast (AM)</label>
-                    <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                <div class="sub-section">
+                    <h3>Health & Allergies</h3>
+                    <div class="form-group">
+                        <label>Health Conditions & Medications</label>
+                        <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Food Allergies</label>
+                        <textarea class="petFoodAllergies" placeholder="e.g., chicken, wheat, dairy"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Environmental Allergies</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Pollen" class="petEnvAllergy">
+                                <label>Pollen</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Mould" class="petEnvAllergy">
+                                <label>Mould</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Dust" class="petEnvAllergy">
+                                <label>Dust</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Grass" class="petEnvAllergy">
+                                <label>Grass</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Environmental Allergies — Other</label>
+                        <input type="text" class="petEnvAllergyOther" placeholder="Any other environmental allergies">
+                    </div>
+                    <div class="form-group">
+                        <label>Medication Allergies</label>
+                        <textarea class="petMedAllergies" placeholder="Any known reactions to medications"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Sensitivities to Handling</label>
+                        <textarea class="petHandlingSensitivities" placeholder="e.g., sensitive ears, doesn't like paw touching, hates being picked up"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Feeding - Dinner (PM)</label>
-                    <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                <div class="sub-section">
+                    <h3>Feeding</h3>
+                    <div class="form-group">
+                        <label>Feeding - Breakfast (AM)</label>
+                        <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
+                    </div>
+                    <div class="form-group">
+                        <label>Feeding - Dinner (PM)</label>
+                        <input type="text" class="petFeedingPM" placeholder="e.g., ½ pack mince + ½ cup kibble">
+                    </div>
+                    <div class="form-group">
+                        <label>Treats?</label>
+                        <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Treats?</label>
-                    <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
-                </div>
-                <div class="form-group">
-                    <label>Exercise & Activity Needs</label>
-                    <textarea class="petExercise" placeholder="e.g., Two 30-min walks per day, loves fetch at the park"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Daily Routine</label>
-                    <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
+                <div class="sub-section">
+                    <h3>Daily Routine & Exercise</h3>
+                    <div class="form-group">
+                        <label>Daily Exercise Level</label>
+                        <select class="petExerciseLevel">
+                            <option value="" disabled selected>— Select —</option>
+                            <option value="Low (minimal walks)">Low (minimal walks)</option>
+                            <option value="Moderate (1-2 walks)">Moderate (1-2 walks)</option>
+                            <option value="High (3+ walks or active play)">High (3+ walks or active play)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ideal Walk Duration</label>
+                        <input type="text" class="petWalkDuration" placeholder="e.g., 15-20 minutes">
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Walking Times</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Early morning" class="petWalkTime">
+                                <label>Early morning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Mid-morning" class="petWalkTime">
+                                <label>Mid-morning</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Afternoon" class="petWalkTime">
+                                <label>Afternoon</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" value="Evening" class="petWalkTime">
+                                <label>Evening</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Playtime Preferences</label>
+                        <textarea class="petPlaytime" placeholder="e.g., loves fetch, prefers indoor play, tug-of-war"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Nap / Rest Schedule</label>
+                        <textarea class="petNapSchedule" placeholder="e.g., naps 2-4pm, very grumpy if woken"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Routine Overview</label>
+                        <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
+                    </div>
                 </div>
             `;
             document.getElementById('petSections').appendChild(petSection);
+            updateMultiPetVisibility();
+        }
+
+        function getCheckedValues(section, className) {
+            return Array.from(section.querySelectorAll('.' + className + ':checked')).map(cb => cb.value).join(', ');
         }
 
         function getFormData() {
@@ -788,6 +1079,13 @@
             ['habitDigging', 'habitScratching', 'habitBarking', 'habitPhobias', 'habitEscaping', 'habitChewing', 'habitWhimpering'].forEach(id => {
                 if (document.getElementById(id)?.checked) {
                     habits.push(document.getElementById(id).value);
+                }
+            });
+
+            const hazards = [];
+            ['hazardPlants', 'hazardPool', 'hazardDoors', 'hazardElectrical'].forEach(id => {
+                if (document.getElementById(id)?.checked) {
+                    hazards.push(document.getElementById(id).value);
                 }
             });
 
@@ -804,12 +1102,22 @@
                         vaccinated: section.querySelector(`.petVaccinated:checked`)?.value || '',
                         toilet: section.querySelector(`.petToilet:checked`)?.value || '',
                         alone: section.querySelector(`.petAlone:checked`)?.value || '',
+                        microchip: section.querySelector('.petMicrochip')?.value || '',
+                        features: section.querySelector('.petFeatures')?.value || '',
                         health: section.querySelector('.petHealth')?.value || '',
-                        allergies: section.querySelector('.petAllergies')?.value || '',
+                        foodAllergies: section.querySelector('.petFoodAllergies')?.value || '',
+                        envAllergies: getCheckedValues(section, 'petEnvAllergy'),
+                        envAllergyOther: section.querySelector('.petEnvAllergyOther')?.value || '',
+                        medAllergies: section.querySelector('.petMedAllergies')?.value || '',
+                        handlingSensitivities: section.querySelector('.petHandlingSensitivities')?.value || '',
                         feedingAM: section.querySelector('.petFeedingAM')?.value || '',
                         feedingPM: section.querySelector('.petFeedingPM')?.value || '',
                         treats: section.querySelector('.petTreats')?.value || '',
-                        exercise: section.querySelector('.petExercise')?.value || '',
+                        exerciseLevel: section.querySelector('.petExerciseLevel')?.value || '',
+                        walkDuration: section.querySelector('.petWalkDuration')?.value || '',
+                        walkTimes: getCheckedValues(section, 'petWalkTime'),
+                        playtime: section.querySelector('.petPlaytime')?.value || '',
+                        napSchedule: section.querySelector('.petNapSchedule')?.value || '',
                         routine: section.querySelector('.petRoutine')?.value || ''
                     });
                 }
@@ -827,20 +1135,29 @@
                     dates: getValue('dates')
                 },
                 pets: pets,
+                multiPet: {
+                    interaction: getValue('petInteraction'),
+                    separation: getRadio('petSeparation'),
+                    separationNotes: getValue('separationNotes'),
+                    territorial: getValue('territorialBehaviour')
+                },
                 behaviour: {
                     communication: getValue('communication'),
                     sleepLocation: getValue('sleepLocation'),
                     behaviours: getValue('behaviours'),
                     triggers: getValue('triggers'),
-                    petInteraction: getValue('petInteraction'),
-                    restrictions: getValue('restrictions'),
+                    triggerAvoid: getValue('triggerAvoid'),
                     habits: habits.join(', '),
                     tips: getValue('tips')
                 },
                 household: {
                     rules: getValue('houseRules'),
                     security: getValue('security'),
-                    cameras: getValue('cameras')
+                    cameras: getValue('cameras'),
+                    restrictions: getValue('restrictions'),
+                    hazards: hazards.join(', '),
+                    hazardOther: getValue('hazardOther'),
+                    petProofAreas: getValue('petProofAreas')
                 },
                 emergency: {
                     vetName: getValue('vetName'),
@@ -855,6 +1172,15 @@
                     agreed: document.getElementById('agreeTerms')?.checked ? 'Yes' : 'No'
                 }
             };
+        }
+
+        function formatAllergies(pet) {
+            const parts = [];
+            if (pet.foodAllergies) parts.push('Food: ' + pet.foodAllergies);
+            const env = [pet.envAllergies, pet.envAllergyOther].filter(Boolean).join(', ');
+            if (env) parts.push('Environmental: ' + env);
+            if (pet.medAllergies) parts.push('Medication: ' + pet.medAllergies);
+            return parts.length ? parts.join('; ') : 'None';
         }
 
         function formatFormText(data) {
@@ -887,16 +1213,40 @@ Desexed: ${pet.desexed || 'N/A'}
 Vaccinated: ${pet.vaccinated || 'N/A'}
 Toilet Trained: ${pet.toilet || 'N/A'}
 Can Be Left Alone: ${pet.alone || 'N/A'}
-Health/Medications: ${pet.health || 'None'}
-Allergies: ${pet.allergies || 'None'}
-Feeding AM: ${pet.feedingAM || 'N/A'}
-Feeding PM: ${pet.feedingPM || 'N/A'}
-Treats: ${pet.treats || 'N/A'}
-Exercise & Activity: ${pet.exercise || 'N/A'}
-Daily Routine: ${pet.routine || 'N/A'}
+Microchip: ${pet.microchip || 'N/A'}
+Distinguishing Features: ${pet.features || 'N/A'}
+
+Health & Allergies:
+  Health/Medications: ${pet.health || 'None'}
+  Allergies: ${formatAllergies(pet)}
+  Handling Sensitivities: ${pet.handlingSensitivities || 'None'}
+
+Feeding:
+  AM: ${pet.feedingAM || 'N/A'}
+  PM: ${pet.feedingPM || 'N/A'}
+  Treats: ${pet.treats || 'N/A'}
+
+Daily Routine & Exercise:
+  Exercise Level: ${pet.exerciseLevel || 'N/A'}
+  Walk Duration: ${pet.walkDuration || 'N/A'}
+  Walk Times: ${pet.walkTimes || 'N/A'}
+  Playtime: ${pet.playtime || 'N/A'}
+  Nap Schedule: ${pet.napSchedule || 'N/A'}
+  Routine: ${pet.routine || 'N/A'}
 
 `;
             });
+
+            if (data.pets.length > 1) {
+                text += `MULTI-PET DYNAMICS
+──────────────────
+Interaction: ${data.multiPet.interaction || 'N/A'}
+Need Separation: ${data.multiPet.separation || 'N/A'}
+Separation Details: ${data.multiPet.separationNotes || 'N/A'}
+Territorial Behaviours: ${data.multiPet.territorial || 'N/A'}
+
+`;
+            }
 
             text += `BEHAVIOUR & COMMUNICATION
 ─────────────────────────
@@ -904,8 +1254,7 @@ Communication: ${data.behaviour.communication || 'N/A'}
 Sleep Location: ${data.behaviour.sleepLocation || 'N/A'}
 Behaviours to Note: ${data.behaviour.behaviours || 'None'}
 Calming/Redirect Strategies: ${data.behaviour.triggers || 'N/A'}
-Multi-Pet Interaction: ${data.behaviour.petInteraction || 'N/A'}
-Items/Areas to Restrict: ${data.behaviour.restrictions || 'N/A'}
+Triggers to Avoid: ${data.behaviour.triggerAvoid || 'N/A'}
 Habits: ${data.behaviour.habits || 'None'}
 Tips/Tricks: ${data.behaviour.tips || 'N/A'}
 
@@ -914,6 +1263,9 @@ HOUSEHOLD
 House Rules: ${data.household.rules || 'N/A'}
 Security System: ${data.household.security || 'N/A'}
 Cameras: ${data.household.cameras || 'N/A'}
+Restricted Items: ${data.household.restrictions || 'N/A'}
+Hazards: ${[data.household.hazards, data.household.hazardOther].filter(Boolean).join(', ') || 'None'}
+Pet-Proof Areas: ${data.household.petProofAreas || 'N/A'}
 
 EMERGENCY INFO
 ──────────────
