@@ -429,6 +429,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Allergies</label>
+                            <textarea class="petAllergies" placeholder="Food, environmental, or medication allergies"></textarea>
+                        </div>
+
+                        <div class="form-group">
                             <label>Feeding - Breakfast (AM)</label>
                             <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
                         </div>
@@ -441,6 +446,16 @@
                         <div class="form-group">
                             <label>Treats?</label>
                             <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Exercise & Activity Needs</label>
+                            <textarea class="petExercise" placeholder="e.g., Two 30-min walks per day, loves fetch at the park"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Daily Routine</label>
+                            <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
                         </div>
                     </div>
                 </div>
@@ -465,6 +480,21 @@
                 <div class="form-group">
                     <label>Any behaviours I should be mindful of?</label>
                     <textarea id="behaviours" placeholder="e.g., reactive, doesn't mix with other animals, biting"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>What works to calm or redirect them?</label>
+                    <textarea id="triggers" placeholder="e.g., If anxious during storms, put on white noise and give a Kong. If reactive on walks, cross the street."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>If you have multiple pets, how do they interact?</label>
+                    <textarea id="petInteraction" placeholder="e.g., They play well together but feed separately. Keep apart when visitors arrive."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Items or areas to keep away from your pet?</label>
+                    <textarea id="restrictions" placeholder="e.g., Keep shoes in the closet (chews them), no access to the spare room, keep chocolate/grapes out of reach"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -723,6 +753,10 @@
                     <textarea class="petHealth" placeholder="Include medication name, dose, and how it's administered"></textarea>
                 </div>
                 <div class="form-group">
+                    <label>Allergies</label>
+                    <textarea class="petAllergies" placeholder="Food, environmental, or medication allergies"></textarea>
+                </div>
+                <div class="form-group">
                     <label>Feeding - Breakfast (AM)</label>
                     <input type="text" class="petFeedingAM" placeholder="e.g., 1 cup kibble + 1 tin sardines">
                 </div>
@@ -733,6 +767,14 @@
                 <div class="form-group">
                     <label>Treats?</label>
                     <input type="text" class="petTreats" placeholder="What treats do they like? How often?">
+                </div>
+                <div class="form-group">
+                    <label>Exercise & Activity Needs</label>
+                    <textarea class="petExercise" placeholder="e.g., Two 30-min walks per day, loves fetch at the park"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Daily Routine</label>
+                    <textarea class="petRoutine" placeholder="e.g., Walk at 7am, breakfast at 8am, nap 12-2pm, dinner at 5pm"></textarea>
                 </div>
             `;
             document.getElementById('petSections').appendChild(petSection);
@@ -763,9 +805,12 @@
                         toilet: section.querySelector(`.petToilet:checked`)?.value || '',
                         alone: section.querySelector(`.petAlone:checked`)?.value || '',
                         health: section.querySelector('.petHealth')?.value || '',
+                        allergies: section.querySelector('.petAllergies')?.value || '',
                         feedingAM: section.querySelector('.petFeedingAM')?.value || '',
                         feedingPM: section.querySelector('.petFeedingPM')?.value || '',
-                        treats: section.querySelector('.petTreats')?.value || ''
+                        treats: section.querySelector('.petTreats')?.value || '',
+                        exercise: section.querySelector('.petExercise')?.value || '',
+                        routine: section.querySelector('.petRoutine')?.value || ''
                     });
                 }
             });
@@ -786,6 +831,9 @@
                     communication: getValue('communication'),
                     sleepLocation: getValue('sleepLocation'),
                     behaviours: getValue('behaviours'),
+                    triggers: getValue('triggers'),
+                    petInteraction: getValue('petInteraction'),
+                    restrictions: getValue('restrictions'),
                     habits: habits.join(', '),
                     tips: getValue('tips')
                 },
@@ -840,9 +888,12 @@ Vaccinated: ${pet.vaccinated || 'N/A'}
 Toilet Trained: ${pet.toilet || 'N/A'}
 Can Be Left Alone: ${pet.alone || 'N/A'}
 Health/Medications: ${pet.health || 'None'}
+Allergies: ${pet.allergies || 'None'}
 Feeding AM: ${pet.feedingAM || 'N/A'}
 Feeding PM: ${pet.feedingPM || 'N/A'}
 Treats: ${pet.treats || 'N/A'}
+Exercise & Activity: ${pet.exercise || 'N/A'}
+Daily Routine: ${pet.routine || 'N/A'}
 
 `;
             });
@@ -852,6 +903,9 @@ Treats: ${pet.treats || 'N/A'}
 Communication: ${data.behaviour.communication || 'N/A'}
 Sleep Location: ${data.behaviour.sleepLocation || 'N/A'}
 Behaviours to Note: ${data.behaviour.behaviours || 'None'}
+Calming/Redirect Strategies: ${data.behaviour.triggers || 'N/A'}
+Multi-Pet Interaction: ${data.behaviour.petInteraction || 'N/A'}
+Items/Areas to Restrict: ${data.behaviour.restrictions || 'N/A'}
 Habits: ${data.behaviour.habits || 'None'}
 Tips/Tricks: ${data.behaviour.tips || 'N/A'}
 
